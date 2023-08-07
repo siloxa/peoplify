@@ -2,6 +2,7 @@ package io.github.shuoros.peoplify.service;
 
 import io.github.shuoros.peoplify.model.enumeration.BackgroundColor;
 import io.github.shuoros.peoplify.model.enumeration.BodyColor;
+import io.github.shuoros.peoplify.model.enumeration.ClothColor;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -14,22 +15,17 @@ import java.util.Random;
 @Service
 public class AvatarGeneratorService {
 
-    protected static final int CANVAS_SIZE = 1024;
-    protected static final Random RANDOM = new Random();
+    private static final int CANVAS_SIZE = 600;
+    private static final Random RANDOM = new Random();
 
     public void generateAvatar(OutputStream outputStream) throws IOException {
         final BufferedImage canvas = setUpCanvas();
 
         renderBody(canvas);
 
-        writeToOutputStream(canvas, outputStream);
-    }
+        renderCloth(canvas);
 
-    private void renderBody(BufferedImage canvas) {
-        final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
-        final BufferedImage body = resolveRandomBody();
-        graphics.drawImage(body, 20, 50, null);
-        graphics.dispose();
+        writeToOutputStream(canvas, outputStream);
     }
 
     private BufferedImage setUpCanvas() {
@@ -43,14 +39,34 @@ public class AvatarGeneratorService {
         return canvas;
     }
 
+    private void renderBody(BufferedImage canvas) {
+        final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
+        final BufferedImage body = resolveRandomBody();
+        graphics.drawImage(body, 116, 22, null);
+        graphics.dispose();
+    }
+
+    private void renderCloth(BufferedImage canvas) {
+        final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
+        final BufferedImage body = resolveRandomCloth();
+        graphics.drawImage(body, 109, 384, null);
+        graphics.dispose();
+    }
+
+    private Color resolveRandomBackgroundColor() {
+        return BackgroundColor.values()[RANDOM.nextInt(BackgroundColor.values().length)].getColor();
+    }
+
     private BufferedImage resolveRandomBody() {
         return AvatarComponentsProvider.body.get(
                 BodyColor.values()[RANDOM.nextInt(BodyColor.values().length)]
         );
     }
 
-    private Color resolveRandomBackgroundColor() {
-        return BackgroundColor.values()[RANDOM.nextInt(BackgroundColor.values().length)].getColor();
+    private BufferedImage resolveRandomCloth() {
+        return AvatarComponentsProvider.cloth.get(
+                ClothColor.values()[RANDOM.nextInt(ClothColor.values().length)]
+        );
     }
 
     private void writeToOutputStream(BufferedImage canvas, OutputStream outputStream) throws IOException {
