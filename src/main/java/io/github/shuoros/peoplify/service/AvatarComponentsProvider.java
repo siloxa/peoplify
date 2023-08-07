@@ -2,6 +2,7 @@ package io.github.shuoros.peoplify.service;
 
 import io.github.shuoros.peoplify.model.enumeration.BodyColor;
 import io.github.shuoros.peoplify.model.enumeration.ClothColor;
+import io.github.shuoros.peoplify.model.enumeration.FaceExpression;
 import org.springframework.util.ResourceUtils;
 
 import javax.imageio.ImageIO;
@@ -12,6 +13,8 @@ import java.util.Map;
 public class AvatarComponentsProvider {
 
     protected static final Map<BodyColor, BufferedImage> body;
+    protected static final Map<FaceExpression, BufferedImage> face;
+
     protected static final Map<ClothColor, BufferedImage> cloth;
 
 
@@ -23,6 +26,9 @@ public class AvatarComponentsProvider {
                 BodyColor.NUDE, loadComponent("body-nude"),
                 BodyColor.PINK, loadComponent("body-pink"),
                 BodyColor.WHITE, loadComponent("body-white")
+        );
+        face = Map.of(
+                FaceExpression.HAPPY, loadComponent("face-happy")
         );
         cloth = Map.of(
                 ClothColor.BLACK, loadComponent("cloth-black"),
