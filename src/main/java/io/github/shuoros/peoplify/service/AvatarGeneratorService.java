@@ -1,5 +1,9 @@
 package io.github.shuoros.peoplify.service;
 
+import io.github.shuoros.peoplify.model.BodyComponent;
+import io.github.shuoros.peoplify.model.ClothComponent;
+import io.github.shuoros.peoplify.model.FaceComponent;
+import io.github.shuoros.peoplify.model.GlassesComponent;
 import io.github.shuoros.peoplify.model.enumeration.BackgroundColor;
 import io.github.shuoros.peoplify.model.enumeration.BodyColor;
 import io.github.shuoros.peoplify.model.enumeration.ClothColor;
@@ -21,12 +25,15 @@ public class AvatarGeneratorService {
 
     public void generateAvatar(OutputStream outputStream) throws IOException {
         final BufferedImage canvas = setUpCanvas();
+        final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
 
-        renderBody(canvas);
+        renderBody(graphics);
 
-        renderFace(canvas);
+        renderFace(graphics);
 
-        renderCloth(canvas);
+        renderCloth(graphics);
+
+        graphics.dispose();
 
         writeToOutputStream(canvas, outputStream);
     }
@@ -42,47 +49,71 @@ public class AvatarGeneratorService {
         return canvas;
     }
 
-    private void renderBody(final BufferedImage canvas) {
-        final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
-        final BufferedImage body = resolveRandomBody();
-        graphics.drawImage(body, 116, 22, null);
-        graphics.dispose();
+    private void renderBody(final Graphics2D graphics) {
+        final BodyComponent body = resolveRandomBody();
+        graphics.drawImage(body.getImage(), body.getX(), body.getY(), null);
     }
 
-    private void renderFace(final BufferedImage canvas) {
-        final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
-        final BufferedImage face = resolveRandomFace();
-        graphics.drawImage(face, 216, 160, null);
-        graphics.dispose();
+    private void renderFace(final Graphics2D graphics) {
+        final FaceComponent face = resolveRandomFace();
+        graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
+        renderGlasses(graphics);
+        renderMole(graphics);
     }
 
-    private void renderCloth(final BufferedImage canvas) {
-        final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
-        final BufferedImage cloth = resolveRandomCloth();
-        graphics.drawImage(cloth, 109, 384, null);
-        graphics.dispose();
+    private void renderGlasses(Graphics2D graphics) {
+        if (wightedRandom(25)) {
+            final GlassesComponent glasses = resolveRandomGlasses();
+            graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
+        }
+    }
+
+    private void renderMole(final Graphics2D graphics) {
+        if (wightedRandom(25)) {
+            graphics.drawImage(
+                    AvatarComponentsProvider.mole.getImage(),
+                    AvatarComponentsProvider.mole.getX(),
+                    AvatarComponentsProvider.mole.getY(),
+                    null
+            );
+        }
+    }
+
+    private void renderCloth(final Graphics2D graphics) {
+        final ClothComponent cloth = resolveRandomCloth();
+        graphics.drawImage(cloth.getImage(), cloth.getX(), cloth.getY(), null);
     }
 
     private Color resolveRandomBackgroundColor() {
         return BackgroundColor.values()[RANDOM.nextInt(BackgroundColor.values().length)].getColor();
     }
 
-    private BufferedImage resolveRandomBody() {
+    private BodyComponent resolveRandomBody() {
         return AvatarComponentsProvider.body.get(
                 BodyColor.values()[RANDOM.nextInt(BodyColor.values().length)]
         );
     }
 
-    private BufferedImage resolveRandomFace() {
+    private FaceComponent resolveRandomFace() {
         return AvatarComponentsProvider.face.get(
                 FaceExpression.values()[RANDOM.nextInt(FaceExpression.values().length)]
         );
     }
 
-    private BufferedImage resolveRandomCloth() {
+    private GlassesComponent resolveRandomGlasses() {
+        return AvatarComponentsProvider.glasses.get(
+                RANDOM.nextInt(AvatarComponentsProvider.glasses.size())
+        );
+    }
+
+    private ClothComponent resolveRandomCloth() {
         return AvatarComponentsProvider.cloth.get(
                 ClothColor.values()[RANDOM.nextInt(ClothColor.values().length)]
         );
+    }
+
+    private boolean wightedRandom(int chance) {
+        return RANDOM.nextFloat(11) <= (chance / 10F);
     }
 
     private void writeToOutputStream(final BufferedImage canvas, final OutputStream outputStream) throws IOException {
