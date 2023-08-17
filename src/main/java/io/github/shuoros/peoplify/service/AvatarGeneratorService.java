@@ -3,7 +3,7 @@ package io.github.shuoros.peoplify.service;
 import io.github.shuoros.peoplify.model.BodyComponent;
 import io.github.shuoros.peoplify.model.ClothComponent;
 import io.github.shuoros.peoplify.model.FaceComponent;
-import io.github.shuoros.peoplify.model.GlassesComponent;
+import io.github.shuoros.peoplify.model.OtherComponent;
 import io.github.shuoros.peoplify.model.enumeration.BackgroundColor;
 import io.github.shuoros.peoplify.model.enumeration.BodyColor;
 import io.github.shuoros.peoplify.model.enumeration.ClothColor;
@@ -57,13 +57,25 @@ public class AvatarGeneratorService {
     private void renderFace(final Graphics2D graphics) {
         final FaceComponent face = resolveRandomFace();
         graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
+        renderHeadband(graphics);
         renderGlasses(graphics);
         renderMole(graphics);
     }
 
+    private void renderHeadband(Graphics2D graphics) {
+        if (wightedRandom(25)) {
+            graphics.drawImage(
+                    AvatarComponentsProvider.headband.getImage(),
+                    AvatarComponentsProvider.headband.getX(),
+                    AvatarComponentsProvider.headband.getY(),
+                    null
+            );
+        }
+    }
+
     private void renderGlasses(Graphics2D graphics) {
         if (wightedRandom(25)) {
-            final GlassesComponent glasses = resolveRandomGlasses();
+            final OtherComponent glasses = resolveRandomGlasses();
             graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
         }
     }
@@ -100,7 +112,7 @@ public class AvatarGeneratorService {
         );
     }
 
-    private GlassesComponent resolveRandomGlasses() {
+    private OtherComponent resolveRandomGlasses() {
         return AvatarComponentsProvider.glasses.get(
                 RANDOM.nextInt(AvatarComponentsProvider.glasses.size())
         );

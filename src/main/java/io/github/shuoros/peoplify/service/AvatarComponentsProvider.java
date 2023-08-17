@@ -17,9 +17,9 @@ public class AvatarComponentsProvider {
     protected static final Map<BodyColor, BodyComponent> body;
     protected static final Map<FaceExpression, FaceComponent> face;
     protected static final Map<ClothColor, ClothComponent> cloth;
-    protected static final List<GlassesComponent> glasses;
-    protected static MoleComponent mole;
-
+    protected static final List<OtherComponent> glasses;
+    protected static OtherComponent mole;
+    protected static OtherComponent headband;
 
     static {
         body = Map.of(
@@ -46,12 +46,11 @@ public class AvatarComponentsProvider {
                 ClothColor.YELLOW, buildClothComponent("cloth-yellow")
         );
         glasses = List.of(
-                buildGlassesComponent("glasses-0", 170, 166),
-                buildGlassesComponent("glasses-1", 152, 154)
+                buildOtherComponent("glasses-0", 170, 166),
+                buildOtherComponent("glasses-1", 152, 154)
         );
-        mole = MoleComponent.builder()
-                .image(loadImage("mole"))
-                .build();
+        mole = buildOtherComponent("mole", 325, 270);
+        headband = buildOtherComponent("headband", 176, 110);
     }
 
     private static BodyComponent buildBodyComponent(String name) {
@@ -72,8 +71,8 @@ public class AvatarComponentsProvider {
                 .build();
     }
 
-    private static GlassesComponent buildGlassesComponent(String name, Integer x, Integer y) {
-        return GlassesComponent.builder()
+    private static OtherComponent buildOtherComponent(String name, Integer x, Integer y) {
+        return OtherComponent.builder()
                 .image(loadImage(name))
                 .x(x)
                 .y(y)
