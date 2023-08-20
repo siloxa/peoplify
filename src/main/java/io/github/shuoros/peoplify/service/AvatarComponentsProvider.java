@@ -18,6 +18,7 @@ public class AvatarComponentsProvider {
     protected static final Map<FaceExpression, FaceComponent> face;
     protected static final Map<ClothColor, ClothComponent> cloth;
     protected static final List<OtherComponent> glasses;
+    protected static final List<OtherComponent> earing;
     protected static OtherComponent mole;
     protected static OtherComponent headband;
     protected static OtherComponent scar;
@@ -51,7 +52,12 @@ public class AvatarComponentsProvider {
                 buildOtherComponent("glasses-0", 170, 166),
                 buildOtherComponent("glasses-1", 152, 154)
         );
-        mole = buildOtherComponent("mole", 325, 270);
+        earing = List.of(
+                buildOtherComponent("earing-0", 154, 264),
+                buildOtherComponent("earing-0", 429, 264),
+                buildOtherComponent("earing-1", 154, 265)
+        );
+        mole = buildOtherComponent("mole", 330, 270);
         headband = buildOtherComponent("headband", 176, 110);
         scar = buildOtherComponent("scar", 240, 140);
     }

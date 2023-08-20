@@ -57,19 +57,27 @@ public class AvatarGeneratorService {
     private void renderFace(final Graphics2D graphics) {
         final FaceComponent face = resolveRandomFace();
         graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
+        renderEaring(graphics);
         renderScar(graphics);
         renderHeadband(graphics);
-        renderGlasses(graphics);
         renderMole(graphics);
+        renderGlasses(graphics);
+    }
+
+    private void renderEaring(Graphics2D graphics) {
+        final OtherComponent glasses = resolveRandomEaring();
+        graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
     }
 
     private void renderScar(Graphics2D graphics) {
-        graphics.drawImage(
-                AvatarComponentsProvider.scar.getImage(),
-                AvatarComponentsProvider.scar.getX(),
-                AvatarComponentsProvider.scar.getY(),
-                null
-        );
+        if (wightedRandom(25)) {
+            graphics.drawImage(
+                    AvatarComponentsProvider.scar.getImage(),
+                    AvatarComponentsProvider.scar.getX(),
+                    AvatarComponentsProvider.scar.getY(),
+                    null
+            );
+        }
     }
 
     private void renderHeadband(Graphics2D graphics) {
@@ -83,13 +91,6 @@ public class AvatarGeneratorService {
         }
     }
 
-    private void renderGlasses(Graphics2D graphics) {
-        if (wightedRandom(25)) {
-            final OtherComponent glasses = resolveRandomGlasses();
-            graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
-        }
-    }
-
     private void renderMole(final Graphics2D graphics) {
         if (wightedRandom(25)) {
             graphics.drawImage(
@@ -98,6 +99,13 @@ public class AvatarGeneratorService {
                     AvatarComponentsProvider.mole.getY(),
                     null
             );
+        }
+    }
+
+    private void renderGlasses(Graphics2D graphics) {
+        if (wightedRandom(25)) {
+            final OtherComponent glasses = resolveRandomGlasses();
+            graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
         }
     }
 
@@ -119,6 +127,12 @@ public class AvatarGeneratorService {
     private FaceComponent resolveRandomFace() {
         return AvatarComponentsProvider.face.get(
                 FaceExpression.values()[RANDOM.nextInt(FaceExpression.values().length)]
+        );
+    }
+
+    private OtherComponent resolveRandomEaring() {
+        return AvatarComponentsProvider.earing.get(
+                RANDOM.nextInt(AvatarComponentsProvider.earing.size())
         );
     }
 
