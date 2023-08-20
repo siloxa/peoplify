@@ -57,9 +57,19 @@ public class AvatarGeneratorService {
     private void renderFace(final Graphics2D graphics) {
         final FaceComponent face = resolveRandomFace();
         graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
+        renderScar(graphics);
         renderHeadband(graphics);
         renderGlasses(graphics);
         renderMole(graphics);
+    }
+
+    private void renderScar(Graphics2D graphics) {
+        graphics.drawImage(
+                AvatarComponentsProvider.scar.getImage(),
+                AvatarComponentsProvider.scar.getX(),
+                AvatarComponentsProvider.scar.getY(),
+                null
+        );
     }
 
     private void renderHeadband(Graphics2D graphics) {

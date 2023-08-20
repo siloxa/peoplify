@@ -20,6 +20,8 @@ public class AvatarComponentsProvider {
     protected static final List<OtherComponent> glasses;
     protected static OtherComponent mole;
     protected static OtherComponent headband;
+    protected static OtherComponent scar;
+
 
     static {
         body = Map.of(
@@ -51,6 +53,7 @@ public class AvatarComponentsProvider {
         );
         mole = buildOtherComponent("mole", 325, 270);
         headband = buildOtherComponent("headband", 176, 110);
+        scar = buildOtherComponent("scar", 240, 140);
     }
 
     private static BodyComponent buildBodyComponent(String name) {
