@@ -1,9 +1,7 @@
 package io.github.shuoros.peoplify.service;
 
 import io.github.shuoros.peoplify.model.*;
-import io.github.shuoros.peoplify.model.enumeration.BodyColor;
-import io.github.shuoros.peoplify.model.enumeration.ClothColor;
-import io.github.shuoros.peoplify.model.enumeration.FaceExpression;
+import io.github.shuoros.peoplify.model.enumeration.*;
 import org.springframework.util.ResourceUtils;
 
 import javax.imageio.ImageIO;
@@ -16,6 +14,7 @@ public class AvatarComponentsProvider {
 
     protected static final Map<BodyColor, BodyComponent> body;
     protected static final Map<FaceExpression, FaceComponent> face;
+    protected static final Map<HairType, HairComponent> hair;
     protected static final Map<ClothColor, ClothComponent> cloth;
     protected static final List<OtherComponent> glasses;
     protected static final List<OtherComponent> earing;
@@ -35,6 +34,15 @@ public class AvatarComponentsProvider {
         );
         face = Map.of(
                 FaceExpression.HAPPY, buildFaceComponent("face-happy")
+        );
+        hair = Map.of(
+                HairType.SEMI_BALD, buildHairComponent("hair-semi-bald", 170, 100),
+                HairType.LONG_AFRO, buildHairComponent("hair-long-afro", 57, 10),
+                HairType.SHORT_AFRO, buildHairComponent("hair-short-afro", 100, 0),
+                HairType.PONY_TAIL, buildHairComponent("hair-pony-tail", 169, 10),
+                HairType.CENTER_PART, buildHairComponent("hair-center-part", 174, 44),
+                HairType.SIDE_PART, buildHairComponent("hair-side-part", 174, 44),
+                HairType.CORNROWS, buildHairComponent("hair-cornrows", 140, 0)
         );
         cloth = Map.of(
                 ClothColor.BLACK, buildClothComponent("cloth-black"),
@@ -71,6 +79,24 @@ public class AvatarComponentsProvider {
     private static FaceComponent buildFaceComponent(String name) {
         return FaceComponent.builder()
                 .image(loadImage(name))
+                .build();
+    }
+
+    private static HairComponent buildHairComponent(String name, Integer x, Integer y) {
+        return HairComponent.builder()
+                .hairs(
+                        Map.of(
+                                HairColor.BLACK, loadImage(name + "-black"),
+                                HairColor.BLONDE, loadImage(name + "-blonde"),
+                                HairColor.BLUE, loadImage(name + "-blue"),
+                                HairColor.BROWN, loadImage(name + "-brown"),
+                                HairColor.ORANGE, loadImage(name + "-orange"),
+                                HairColor.PINK, loadImage(name + "-pink"),
+                                HairColor.WHITE, loadImage(name + "-white")
+                        )
+                )
+                .x(x)
+                .y(y)
                 .build();
     }
 

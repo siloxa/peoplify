@@ -1,13 +1,7 @@
 package io.github.shuoros.peoplify.service;
 
-import io.github.shuoros.peoplify.model.BodyComponent;
-import io.github.shuoros.peoplify.model.ClothComponent;
-import io.github.shuoros.peoplify.model.FaceComponent;
-import io.github.shuoros.peoplify.model.OtherComponent;
-import io.github.shuoros.peoplify.model.enumeration.BackgroundColor;
-import io.github.shuoros.peoplify.model.enumeration.BodyColor;
-import io.github.shuoros.peoplify.model.enumeration.ClothColor;
-import io.github.shuoros.peoplify.model.enumeration.FaceExpression;
+import io.github.shuoros.peoplify.model.*;
+import io.github.shuoros.peoplify.model.enumeration.*;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -59,17 +53,23 @@ public class AvatarGeneratorService {
         graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
         renderEaring(graphics);
         renderScar(graphics);
-        renderHeadband(graphics);
+//        renderHeadband(graphics);
         renderMole(graphics);
+        renderHair(graphics);
         renderGlasses(graphics);
     }
 
-    private void renderEaring(Graphics2D graphics) {
+    private void renderHair(final Graphics2D graphics) {
+        final HairComponent hair = resolveRandomHair();
+        graphics.drawImage(hair.getImage(), hair.getX(), hair.getY(), null);
+    }
+
+    private void renderEaring(final Graphics2D graphics) {
         final OtherComponent glasses = resolveRandomEaring();
         graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
     }
 
-    private void renderScar(Graphics2D graphics) {
+    private void renderScar(final Graphics2D graphics) {
         if (wightedRandom(25)) {
             graphics.drawImage(
                     AvatarComponentsProvider.scar.getImage(),
@@ -80,7 +80,7 @@ public class AvatarGeneratorService {
         }
     }
 
-    private void renderHeadband(Graphics2D graphics) {
+    private void renderHeadband(final Graphics2D graphics) {
         if (wightedRandom(25)) {
             graphics.drawImage(
                     AvatarComponentsProvider.headband.getImage(),
@@ -102,7 +102,7 @@ public class AvatarGeneratorService {
         }
     }
 
-    private void renderGlasses(Graphics2D graphics) {
+    private void renderGlasses(final Graphics2D graphics) {
         if (wightedRandom(25)) {
             final OtherComponent glasses = resolveRandomGlasses();
             graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
@@ -127,6 +127,13 @@ public class AvatarGeneratorService {
     private FaceComponent resolveRandomFace() {
         return AvatarComponentsProvider.face.get(
                 FaceExpression.values()[RANDOM.nextInt(FaceExpression.values().length)]
+        );
+    }
+
+    private HairComponent resolveRandomHair() {
+        return AvatarComponentsProvider.hair.get(
+                    HairType.CORNROWS
+//                HairType.values()[RANDOM.nextInt(HairType.values().length)]
         );
     }
 
