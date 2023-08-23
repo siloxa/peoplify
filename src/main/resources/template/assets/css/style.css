@@ -1,0 +1,33 @@
+#header{
+    width: 100%;
+    height: 64px;
+    background: #755BDF1A;
+}
+.container{
+    width: 1200px;
+    margin: auto;
+}
+#header .header{
+    display: flex;
+    justify-content: space-between;
+}
+#header .header .header-right{
+    display: flex;
+    margin-top: 20px;
+    font-size: 17px;
+    color: #757575;
+    font-family: Rubik;
+}
+#header .header .header-right .right-right{
+    margin-left: 25px;
+}
+#header .header .header-left{
+    margin-top: 16px;
+}
+#text h1{
+    font-size: 64px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 40px;
+    font-family: Rubik;
+}
