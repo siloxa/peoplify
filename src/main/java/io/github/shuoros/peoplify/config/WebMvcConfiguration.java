@@ -10,6 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Autowired
+    private GenderConverter genderConverter;
+
+    @Autowired
     private BodyColorConverter bodyColorConverter;
 
     @Autowired
@@ -19,6 +22,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     private HairTypeConverter hairTypeConverter;
 
     @Autowired
+    private BeardTypeConverter beardTypeConverter;
+
+    @Autowired
     private HairColorConverter hairColorConverter;
 
     @Autowired
@@ -26,9 +32,11 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(genderConverter);
         registry.addConverter(bodyColorConverter);
         registry.addConverter(faceExpressionConverter);
         registry.addConverter(hairTypeConverter);
+        registry.addConverter(beardTypeConverter);
         registry.addConverter(hairColorConverter);
         registry.addConverter(clothColorConverter);
     }

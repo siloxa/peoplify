@@ -1,9 +1,9 @@
 package io.github.shuoros.peoplify.service;
 
-import io.github.shuoros.peoplify.web.controller.dto.AvatarRequest;
 import io.github.shuoros.peoplify.model.*;
 import io.github.shuoros.peoplify.model.enumeration.*;
 import io.github.shuoros.peoplify.util.NumberUtils;
+import io.github.shuoros.peoplify.web.controller.dto.AvatarRequest;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -11,7 +11,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class AvatarGeneratorService {
@@ -182,17 +186,25 @@ public class AvatarGeneratorService {
     }
 
     private HairComponent selectHair(final AvatarRequest avatarRequest) {
-        return avatarRequest.getHairType() != null ? resolveHair(avatarRequest.getHairType()) : resolveRandomHair();
+        return avatarRequest.getHairType() != null ? resolveHair(avatarRequest.getHairType()) : resolveRandomHair(avatarRequest.getGender());
     }
 
     private HairComponent resolveHair(final HairType hairType) {
         return AvatarComponentsProvider.hair.get(hairType);
     }
 
-    private HairComponent resolveRandomHair() {
-        return AvatarComponentsProvider.hair.get(
-                HairType.values()[RANDOM.nextInt(HairType.values().length)]
-        );
+    private HairComponent resolveRandomHair(final Gender gender) {
+        final LinkedHashMap<HairType, HairComponent> hairs =
+                AvatarComponentsProvider.hair
+                        .entrySet()
+                        .stream()
+                        .filter(entry -> entry.getKey().getGender() == gender || entry.getKey().getGender() == Gender.NEUTRAL)
+                        .collect(
+                                Collectors.toMap(
+                                        Map.Entry::getKey, Map.Entry::getValue, (k, v) -> k, LinkedHashMap::new
+                                )
+                        );
+        return new ArrayList<>(hairs.values()).get(RANDOM.nextInt(hairs.size()));
     }
 
     private BufferedImage selectBeardColor(final AvatarRequest avatarRequest, final BeardComponent beard) {
