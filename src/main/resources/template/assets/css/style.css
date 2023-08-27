@@ -11,8 +11,16 @@
     box-shadow: 0px -1px 0px 0px #2F2B431A inset;
     box-shadow: 0px 1px 3px 0px #2F2B431A;
 }
-.color-button{
+.button{
     background: linear-gradient(90deg, #5E3AF1 0%, #947AFF 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer; 
+}
+.border{
+    border-radius: 12px;
+    border: 1px solid  #EDEDED;
 }
 #header .header{
     display: flex;
@@ -61,10 +69,7 @@
     height: 48px;
     width: 56px;
     Padding: 12px 16px 12px 16px ;
-    border-radius: 12px;
     left: 18%;
-    cursor: pointer;
-    border: none;
 }
 #display .display .display-button .button-download{
     position: relative;
@@ -72,12 +77,9 @@
 #display .display .display-button .button-download button{
     height: 48px;
     width: 56px;
-    border-radius: 12px;
     Padding: 12px 16px 12px 16px ;
     position: absolute;
     left : 56.25%;
-    cursor: pointer;
-    border: none;
 }
 #form .form{
     display: flex;
@@ -96,7 +98,6 @@
     top: 41%;
     padding: 14px 15px;
     border-left: 1px solid #EDEDED;
-    cursor: pointer;
 }
 #form .form .form-left form label{
     font-family: Rubik;
@@ -108,8 +109,6 @@
     width: 320px;
     height: 48px;
     margin-top: 8px;
-    border-radius: 12px;
-    border: 1px solid  #EDEDED;
 }
 #form .form .form-left form input::placeholder{
     font-family: Rubik;
@@ -123,14 +122,11 @@
 #form .form .form-left button{
     height: 48px;
     width: 56px;
-    border-radius: 12px;
     Padding: 12px 16px 12px 16px ;
-    cursor: pointer;
     margin-top: 16px;
     margin-top: 34px;
     margin-left: 16px;
     margin-right: 24px;
-    border: none;
 }
 #form .form .form-right{
     display: flex;
@@ -155,8 +151,6 @@
     width: 320px;
     height: 48px;
     margin-top: 8px;
-    border-radius: 12px;
-    border: 1px solid #EDEDED;
 }
 #form .form .form-right form input::placeholder{
     font-family: Rubik;
@@ -170,11 +164,97 @@
 #form .form .form-right button{
     height: 48px;
     width: 56px;
-    border-radius: 12px;
     Padding: 12px 16px 12px 16px;
-    cursor: pointer; 
     margin-top: 34px;
     margin-left: 16px;
+}
+#generate .generate-text{
+    width: 100%;
+    height: 30px;
+    position: relative;
+    margin-top: 40px;    
+}
+#generate .generate-text hr{
+    background-color: #ededed;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10%;
+    height: 1px;
     border: none;
 }
-
+#generate .generate-text .generate-text-h1{
+    height: 27px;
+    background-color: white;
+    position: absolute;
+    left: 19.3%;
+}
+#generate .generate-text .generate-text-h1 h1{
+    color: #000;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+}
+.generate-input{
+    width: 100%;
+    height: 60px;
+    margin-top: 24px;
+    display: flex;
+}
+.generate-input .generate-input-1 select{
+    width: 320px;
+    height: 48px;
+    margin-top: 8px;
+    margin-right: 32px;
+    font-family: Rubik;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    padding-left: 8px;
+}
+.generate-input .generate-input-2{
+    display: flex;
+}
+#generate .generate .generate-button{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+#generate .generate .generate-button button{
+    width: 320px;
+    padding: 12px 16px;
+    font-family: Rubik;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+#developers .developers{
+    width: 100%;
+    height: 462px;
+    margin-top: 48px;
+    align-items: center;
+    background: rgba(117, 91, 223, 0.10);
+}
+#developers .developers .developers-title{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 48px 0;
+    
+}
+#developers .developers .developers-title{
+    color: #000;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 54px;
+    letter-spacing: -0.8px;
+}
