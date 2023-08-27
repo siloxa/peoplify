@@ -77,9 +77,16 @@ public class AvatarGeneratorService {
         renderEaring(graphics);
         renderScar(graphics);
 //        renderHeadband(graphics);
+        renderBeard(graphics, avatarRequest);
         renderMole(graphics);
         renderHair(graphics, avatarRequest);
         renderGlasses(graphics);
+    }
+
+    private void renderBeard(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        final BeardComponent beard = selectBeard(avatarRequest);
+        final BufferedImage beardImage = selectBeardColor(avatarRequest, beard);
+        graphics.drawImage(beardImage, beard.getX(), beard.getY(), null);
     }
 
     private void renderHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
@@ -88,17 +95,13 @@ public class AvatarGeneratorService {
         graphics.drawImage(hairImage, hair.getX(), hair.getY(), null);
     }
 
-    private BufferedImage selectHairColor(final AvatarRequest avatarRequest, final HairComponent hair) {
-        return avatarRequest.getHairColor() != null ? hair.getImage(avatarRequest.getHairColor()) : hair.getImage();
-    }
-
     private void renderEaring(final Graphics2D graphics) {
         final OtherComponent glasses = resolveRandomEaring();
         graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
     }
 
     private void renderScar(final Graphics2D graphics) {
-        if (wightedRandom(25)) {
+        if (wightedRandom(10)) {
             graphics.drawImage(
                     AvatarComponentsProvider.scar.getImage(),
                     AvatarComponentsProvider.scar.getX(),
@@ -174,6 +177,10 @@ public class AvatarGeneratorService {
         );
     }
 
+    private BufferedImage selectHairColor(final AvatarRequest avatarRequest, final HairComponent hair) {
+        return avatarRequest.getHairColor() != null ? hair.getImage(avatarRequest.getHairColor()) : hair.getImage();
+    }
+
     private HairComponent selectHair(final AvatarRequest avatarRequest) {
         return avatarRequest.getHairType() != null ? resolveHair(avatarRequest.getHairType()) : resolveRandomHair();
     }
@@ -185,6 +192,24 @@ public class AvatarGeneratorService {
     private HairComponent resolveRandomHair() {
         return AvatarComponentsProvider.hair.get(
                 HairType.values()[RANDOM.nextInt(HairType.values().length)]
+        );
+    }
+
+    private BufferedImage selectBeardColor(final AvatarRequest avatarRequest, final BeardComponent beard) {
+        return avatarRequest.getBeardColor() != null ? beard.getImage(avatarRequest.getBeardColor()) : beard.getImage();
+    }
+
+    private BeardComponent selectBeard(final AvatarRequest avatarRequest) {
+        return avatarRequest.getBeardType() != null ? resolveBeard(avatarRequest.getBeardType()) : resolveRandomBeard();
+    }
+
+    private BeardComponent resolveBeard(final BeardType beardType) {
+        return AvatarComponentsProvider.beard.get(beardType);
+    }
+
+    private BeardComponent resolveRandomBeard() {
+        return AvatarComponentsProvider.beard.get(
+                BeardType.values()[RANDOM.nextInt(BeardType.values().length)]
         );
     }
 

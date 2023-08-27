@@ -15,6 +15,7 @@ public class AvatarComponentsProvider {
     protected static final Map<BodyColor, BodyComponent> body;
     protected static final Map<FaceExpression, FaceComponent> face;
     protected static final Map<HairType, HairComponent> hair;
+    protected static final Map<BeardType, BeardComponent> beard;
     protected static final Map<ClothColor, ClothComponent> cloth;
     protected static final List<OtherComponent> glasses;
     protected static final List<OtherComponent> earing;
@@ -43,6 +44,9 @@ public class AvatarComponentsProvider {
                 HairType.CENTER_PART, buildHairComponent("hair-center-part", 174, 44),
                 HairType.SIDE_PART, buildHairComponent("hair-side-part", 174, 44),
                 HairType.CORNROWS, buildHairComponent("hair-cornrows", 140, 0)
+        );
+        beard = Map.of(
+                BeardType.DUCKTAIL, buildBeardComponent("beard-ducktail", 278, 350)
         );
         cloth = Map.of(
                 ClothColor.BLACK, buildClothComponent("cloth-black"),
@@ -85,6 +89,24 @@ public class AvatarComponentsProvider {
     private static HairComponent buildHairComponent(String name, Integer x, Integer y) {
         return HairComponent.builder()
                 .hairs(
+                        Map.of(
+                                HairColor.BLACK, loadImage(name + "-black"),
+                                HairColor.BLONDE, loadImage(name + "-blonde"),
+                                HairColor.BLUE, loadImage(name + "-blue"),
+                                HairColor.BROWN, loadImage(name + "-brown"),
+                                HairColor.ORANGE, loadImage(name + "-orange"),
+                                HairColor.PINK, loadImage(name + "-pink"),
+                                HairColor.WHITE, loadImage(name + "-white")
+                        )
+                )
+                .x(x)
+                .y(y)
+                .build();
+    }
+
+    private static BeardComponent buildBeardComponent(String name, Integer x, Integer y) {
+        return BeardComponent.builder()
+                .beards(
                         Map.of(
                                 HairColor.BLACK, loadImage(name + "-black"),
                                 HairColor.BLONDE, loadImage(name + "-blonde"),

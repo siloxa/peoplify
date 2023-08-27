@@ -11,5 +11,7 @@ public class AvatarRequest {
     private FaceExpression faceExpression;
     private HairType hairType;
     private HairColor hairColor;
+    private BeardType beardType;
+    private HairColor beardColor;
     private ClothColor clothColor;
 }
