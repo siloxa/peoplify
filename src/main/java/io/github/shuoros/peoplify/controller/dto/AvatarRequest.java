@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class AvatarRequest {
 
+    private Integer size;
     private BodyColor bodyColor;
     private FaceExpression faceExpression;
     private HairType hairType;

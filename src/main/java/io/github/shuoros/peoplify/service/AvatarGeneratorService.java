@@ -3,6 +3,7 @@ package io.github.shuoros.peoplify.service;
 import io.github.shuoros.peoplify.controller.dto.AvatarRequest;
 import io.github.shuoros.peoplify.model.*;
 import io.github.shuoros.peoplify.model.enumeration.*;
+import io.github.shuoros.peoplify.util.NumberUtils;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -30,18 +31,39 @@ public class AvatarGeneratorService {
 
         graphics.dispose();
 
-        writeToOutputStream(canvas, outputStream);
+        writeToOutputStream(
+                selectCanvasSize(avatarRequest, canvas),
+                outputStream);
     }
 
     private BufferedImage setUpCanvas() {
         final BufferedImage canvas = new BufferedImage(CANVAS_SIZE, CANVAS_SIZE, BufferedImage.TYPE_INT_RGB);
         final Color backgroundColor = resolveRandomBackgroundColor();
+        paintBackground(canvas, backgroundColor);
+        return canvas;
+    }
+
+    private void paintBackground(BufferedImage canvas, Color backgroundColor) {
         for (int i = 0; i < CANVAS_SIZE; i++) {
             for (int j = 0; j < CANVAS_SIZE; j++) {
                 canvas.setRGB(i, j, backgroundColor.getRGB());
             }
         }
-        return canvas;
+    }
+
+    private BufferedImage selectCanvasSize(AvatarRequest avatarRequest, BufferedImage canvas) {
+        return NumberUtils.isNotEmpty(avatarRequest.getSize()) ? resize(canvas, avatarRequest.getSize()) : canvas;
+    }
+
+    public BufferedImage resize(final BufferedImage canvas, int newSize) {
+        final Image tmp = canvas.getScaledInstance(newSize, newSize, Image.SCALE_SMOOTH);
+        final BufferedImage newCanvas = new BufferedImage(newSize, newSize, BufferedImage.TYPE_INT_ARGB);
+
+        final Graphics2D g2d = newCanvas.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        return newCanvas;
     }
 
     private void renderBody(final Graphics2D graphics, final AvatarRequest avatarRequest) {
