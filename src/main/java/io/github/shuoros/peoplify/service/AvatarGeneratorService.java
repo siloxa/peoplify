@@ -1,6 +1,6 @@
 package io.github.shuoros.peoplify.service;
 
-import io.github.shuoros.peoplify.controller.dto.AvatarRequest;
+import io.github.shuoros.peoplify.web.controller.dto.AvatarRequest;
 import io.github.shuoros.peoplify.model.*;
 import io.github.shuoros.peoplify.model.enumeration.*;
 import io.github.shuoros.peoplify.util.NumberUtils;

@@ -1,4 +1,4 @@
-package io.github.shuoros.peoplify.controller.dto;
+package io.github.shuoros.peoplify.web.controller.dto;
 
 import io.github.shuoros.peoplify.model.enumeration.*;
 import lombok.Data;
