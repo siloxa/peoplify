@@ -1,5 +1,6 @@
 package io.github.shuoros.peoplify.controller;
 
+import io.github.shuoros.peoplify.controller.dto.AvatarRequest;
 import io.github.shuoros.peoplify.service.AvatarGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,9 +18,9 @@ public class GeneratorController {
     private AvatarGeneratorService avatarGeneratorService;
 
     @GetMapping(path = "/avatar", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<StreamingResponseBody> generateAvatar() {
+    public ResponseEntity<StreamingResponseBody> generateAvatar(AvatarRequest avatarRequest) {
         return ResponseEntity
                 .ok()
-                .body(outputStream -> avatarGeneratorService.generateAvatar(outputStream));
+                .body(outputStream -> avatarGeneratorService.generateAvatar(avatarRequest, outputStream));
     }
 }

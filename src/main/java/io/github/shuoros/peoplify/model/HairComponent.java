@@ -1,8 +1,6 @@
 package io.github.shuoros.peoplify.model;
 
-import io.github.shuoros.peoplify.model.enumeration.ClothColor;
 import io.github.shuoros.peoplify.model.enumeration.HairColor;
-import io.github.shuoros.peoplify.service.AvatarComponentsProvider;
 import lombok.experimental.SuperBuilder;
 
 import java.awt.image.BufferedImage;
@@ -16,7 +14,7 @@ public class HairComponent extends OtherComponent {
 
     @Override
     public BufferedImage getImage() {
-        if(hairs.isEmpty()) {
+        if (hairs.isEmpty()) {
             return super.getImage();
         }
 
@@ -26,4 +24,11 @@ public class HairComponent extends OtherComponent {
         );
     }
 
+    public BufferedImage getImage(final HairColor hairColor) {
+        if (hairs.isEmpty()) {
+            return super.getImage();
+        }
+
+        return hairs.get(hairColor);
+    }
 }

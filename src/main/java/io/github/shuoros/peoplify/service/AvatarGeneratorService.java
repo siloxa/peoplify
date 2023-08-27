@@ -1,5 +1,6 @@
 package io.github.shuoros.peoplify.service;
 
+import io.github.shuoros.peoplify.controller.dto.AvatarRequest;
 import io.github.shuoros.peoplify.model.*;
 import io.github.shuoros.peoplify.model.enumeration.*;
 import org.springframework.stereotype.Service;
@@ -17,15 +18,15 @@ public class AvatarGeneratorService {
     private static final int CANVAS_SIZE = 600;
     private static final Random RANDOM = new Random();
 
-    public void generateAvatar(OutputStream outputStream) throws IOException {
+    public void generateAvatar(AvatarRequest avatarRequest, OutputStream outputStream) throws IOException {
         final BufferedImage canvas = setUpCanvas();
         final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
 
-        renderBody(graphics);
+        renderBody(graphics, avatarRequest);
 
-        renderFace(graphics);
+        renderFace(graphics, avatarRequest);
 
-        renderCloth(graphics);
+        renderCloth(graphics, avatarRequest);
 
         graphics.dispose();
 
@@ -43,25 +44,30 @@ public class AvatarGeneratorService {
         return canvas;
     }
 
-    private void renderBody(final Graphics2D graphics) {
-        final BodyComponent body = resolveRandomBody();
+    private void renderBody(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        final BodyComponent body = selectBody(avatarRequest);
         graphics.drawImage(body.getImage(), body.getX(), body.getY(), null);
     }
 
-    private void renderFace(final Graphics2D graphics) {
-        final FaceComponent face = resolveRandomFace();
+    private void renderFace(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        final FaceComponent face = selectFace(avatarRequest);
         graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
         renderEaring(graphics);
         renderScar(graphics);
 //        renderHeadband(graphics);
         renderMole(graphics);
-        renderHair(graphics);
+        renderHair(graphics, avatarRequest);
         renderGlasses(graphics);
     }
 
-    private void renderHair(final Graphics2D graphics) {
-        final HairComponent hair = resolveRandomHair();
-        graphics.drawImage(hair.getImage(), hair.getX(), hair.getY(), null);
+    private void renderHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        final HairComponent hair = selectHair(avatarRequest);
+        final BufferedImage hairImage = selectHairColor(avatarRequest, hair);
+        graphics.drawImage(hairImage, hair.getX(), hair.getY(), null);
+    }
+
+    private BufferedImage selectHairColor(final AvatarRequest avatarRequest, final HairComponent hair) {
+        return avatarRequest.getHairColor() != null ? hair.getImage(avatarRequest.getHairColor()) : hair.getImage();
     }
 
     private void renderEaring(final Graphics2D graphics) {
@@ -109,13 +115,21 @@ public class AvatarGeneratorService {
         }
     }
 
-    private void renderCloth(final Graphics2D graphics) {
-        final ClothComponent cloth = resolveRandomCloth();
+    private void renderCloth(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        final ClothComponent cloth = selectCloth(avatarRequest);
         graphics.drawImage(cloth.getImage(), cloth.getX(), cloth.getY(), null);
     }
 
     private Color resolveRandomBackgroundColor() {
         return BackgroundColor.values()[RANDOM.nextInt(BackgroundColor.values().length)].getColor();
+    }
+
+    private BodyComponent selectBody(final AvatarRequest avatarRequest) {
+        return avatarRequest.getBodyColor() != null ? resolveBody(avatarRequest.getBodyColor()) : resolveRandomBody();
+    }
+
+    private BodyComponent resolveBody(final BodyColor bodyColor) {
+        return AvatarComponentsProvider.body.get(bodyColor);
     }
 
     private BodyComponent resolveRandomBody() {
@@ -124,16 +138,31 @@ public class AvatarGeneratorService {
         );
     }
 
+    private FaceComponent selectFace(AvatarRequest avatarRequest) {
+        return avatarRequest.getFaceExpression() != null ? resolveFace(avatarRequest.getFaceExpression()) : resolveRandomFace();
+    }
+
+    private FaceComponent resolveFace(final FaceExpression faceExpression) {
+        return AvatarComponentsProvider.face.get(faceExpression);
+    }
+
     private FaceComponent resolveRandomFace() {
         return AvatarComponentsProvider.face.get(
                 FaceExpression.values()[RANDOM.nextInt(FaceExpression.values().length)]
         );
     }
 
+    private HairComponent selectHair(final AvatarRequest avatarRequest) {
+        return avatarRequest.getHairType() != null ? resolveHair(avatarRequest.getHairType()) : resolveRandomHair();
+    }
+
+    private HairComponent resolveHair(final HairType hairType) {
+        return AvatarComponentsProvider.hair.get(hairType);
+    }
+
     private HairComponent resolveRandomHair() {
         return AvatarComponentsProvider.hair.get(
-                    HairType.CORNROWS
-//                HairType.values()[RANDOM.nextInt(HairType.values().length)]
+                HairType.values()[RANDOM.nextInt(HairType.values().length)]
         );
     }
 
@@ -147,6 +176,14 @@ public class AvatarGeneratorService {
         return AvatarComponentsProvider.glasses.get(
                 RANDOM.nextInt(AvatarComponentsProvider.glasses.size())
         );
+    }
+
+    private ClothComponent selectCloth(AvatarRequest avatarRequest) {
+        return avatarRequest.getClothColor() != null ? resolveCloth(avatarRequest.getClothColor()) : resolveRandomCloth();
+    }
+
+    private ClothComponent resolveCloth(final ClothColor clothColor) {
+        return AvatarComponentsProvider.cloth.get(clothColor);
     }
 
     private ClothComponent resolveRandomCloth() {
