@@ -1,7 +1,7 @@
 package io.github.shuoros.peoplify.web.controller;
 
-import io.github.shuoros.peoplify.web.controller.dto.AvatarRequest;
 import io.github.shuoros.peoplify.service.AvatarGeneratorService;
+import io.github.shuoros.peoplify.web.controller.dto.AvatarRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

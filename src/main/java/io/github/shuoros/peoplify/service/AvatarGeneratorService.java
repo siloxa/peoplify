@@ -23,7 +23,7 @@ public class AvatarGeneratorService {
     private static final int CANVAS_SIZE = 600;
     private static final Random RANDOM = new Random();
 
-    public void generateAvatar(AvatarRequest avatarRequest, OutputStream outputStream) throws IOException {
+    public void generateAvatar(final AvatarRequest avatarRequest, final OutputStream outputStream) throws IOException {
         final BufferedImage canvas = setUpCanvas();
         final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
 
@@ -47,7 +47,7 @@ public class AvatarGeneratorService {
         return canvas;
     }
 
-    private void paintBackground(BufferedImage canvas, Color backgroundColor) {
+    private void paintBackground(final BufferedImage canvas, final Color backgroundColor) {
         for (int i = 0; i < CANVAS_SIZE; i++) {
             for (int j = 0; j < CANVAS_SIZE; j++) {
                 canvas.setRGB(i, j, backgroundColor.getRGB());
@@ -55,7 +55,7 @@ public class AvatarGeneratorService {
         }
     }
 
-    private BufferedImage selectCanvasSize(AvatarRequest avatarRequest, BufferedImage canvas) {
+    private BufferedImage selectCanvasSize(final AvatarRequest avatarRequest, final BufferedImage canvas) {
         return NumberUtils.isNotEmpty(avatarRequest.getSize()) ? resize(canvas, avatarRequest.getSize()) : canvas;
     }
 
@@ -81,7 +81,9 @@ public class AvatarGeneratorService {
         renderEaring(graphics);
         renderScar(graphics);
 //        renderHeadband(graphics);
-        renderBeard(graphics, avatarRequest);
+        if (avatarRequest.getGender() == Gender.MALE) {
+            renderBeard(graphics, avatarRequest);
+        }
         renderMole(graphics);
         renderHair(graphics, avatarRequest);
         renderGlasses(graphics);
@@ -198,7 +200,7 @@ public class AvatarGeneratorService {
                 AvatarComponentsProvider.hair
                         .entrySet()
                         .stream()
-                        .filter(entry -> entry.getKey().getGender() == gender || entry.getKey().getGender() == Gender.NEUTRAL)
+                        .filter(entry -> entry.getKey().getGender() == gender || gender == Gender.NEUTRAL)
                         .collect(
                                 Collectors.toMap(
                                         Map.Entry::getKey, Map.Entry::getValue, (k, v) -> k, LinkedHashMap::new
