@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,12 +153,13 @@
                     <div class="generate-input-1">
                         <select class="form-control gender-select shadow border">
                             <option selected disabled hidden>Gender</option>
-                            <option value="">asdfh</option>
+                            <option th:each="gender: ${genders}" th:value="${gender}" th:text="${gender}"></option>
                         </select>
                     </div>
                     <div class="generate-input-1">
                         <select class="form-control language-select shadow border">
                             <option selected disabled hidden>Language</option>
+                            <option th:each="language: ${languages}" th:value="${language}" th:text="${language}"></option>
                         </select>
                     </div>
                     <div class="generate-input-2">
