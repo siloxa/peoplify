@@ -231,9 +231,11 @@
 }
 #generate .generate .generate-button button{
     width: 320px;
+    height: 48px;
     padding: 12px 16px;
     font-family: Rubik;
     font-weight: 500;
+    font-size: 16px;
     justify-content: center;
     align-items: center;
     gap: 8px;
