@@ -46,7 +46,12 @@ public class AvatarComponentsProvider {
                 HairType.CORNROWS, buildHairComponent("hair-cornrows", 140, 0)
         );
         beard = Map.of(
-                BeardType.DUCKTAIL, buildBeardComponent("beard-ducktail", 278, 350)
+                BeardType.GOAT_PATCH, buildBeardComponent("beard-goat-patch", 277, 360),
+                BeardType.GOATEE, buildBeardComponent("beard-goatee", 285, 360),
+                BeardType.FORK, buildBeardComponent("beard-fork", 271, 355),
+                BeardType.CHIN_TRAP, buildBeardComponent("beard-chin-trap", 161, 267),
+                BeardType.GARIBALDI, buildBeardComponent("beard-garibaldi", 161, 280),
+                BeardType.NED_KELLY, buildBeardComponent("beard-ned-kelly", 175, 260)
         );
         cloth = Map.of(
                 ClothColor.BLACK, buildClothComponent("cloth-black"),
@@ -69,7 +74,7 @@ public class AvatarComponentsProvider {
                 buildOtherComponent("earing-0", 429, 264),
                 buildOtherComponent("earing-1", 154, 265)
         );
-        mole = buildOtherComponent("mole", 330, 270);
+        mole = buildOtherComponent("mole", 330, 250);
         headband = buildOtherComponent("headband", 176, 110);
         scar = buildOtherComponent("scar", 240, 140);
     }

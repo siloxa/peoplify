@@ -29,9 +29,9 @@ public class AvatarGeneratorService {
 
         renderBody(graphics, avatarRequest);
 
-        renderFace(graphics, avatarRequest);
-
         renderCloth(graphics, avatarRequest);
+
+        renderFace(graphics, avatarRequest);
 
         graphics.dispose();
 
@@ -77,22 +77,22 @@ public class AvatarGeneratorService {
 
     private void renderFace(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         final FaceComponent face = selectFace(avatarRequest);
+        renderBeard(graphics, avatarRequest);
         graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
         renderEaring(graphics);
         renderScar(graphics);
 //        renderHeadband(graphics);
-        if (avatarRequest.getGender() == Gender.MALE) {
-            renderBeard(graphics, avatarRequest);
-        }
         renderMole(graphics);
         renderHair(graphics, avatarRequest);
         renderGlasses(graphics);
     }
 
     private void renderBeard(final Graphics2D graphics, final AvatarRequest avatarRequest) {
-        final BeardComponent beard = selectBeard(avatarRequest);
-        final BufferedImage beardImage = selectBeardColor(avatarRequest, beard);
-        graphics.drawImage(beardImage, beard.getX(), beard.getY(), null);
+//        if (avatarRequest.getGender() == Gender.MALE && wightedRandom(50)) {
+            final BeardComponent beard = selectBeard(avatarRequest);
+            final BufferedImage beardImage = selectBeardColor(avatarRequest, beard);
+            graphics.drawImage(beardImage, beard.getX(), beard.getY(), null);
+//        }
     }
 
     private void renderHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
@@ -102,8 +102,10 @@ public class AvatarGeneratorService {
     }
 
     private void renderEaring(final Graphics2D graphics) {
-        final OtherComponent glasses = resolveRandomEaring();
-        graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
+        if (wightedRandom(25)) {
+            final OtherComponent glasses = resolveRandomEaring();
+            graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
+        }
     }
 
     private void renderScar(final Graphics2D graphics) {
@@ -200,7 +202,7 @@ public class AvatarGeneratorService {
                 AvatarComponentsProvider.hair
                         .entrySet()
                         .stream()
-                        .filter(entry -> entry.getKey().getGender() == gender || gender == Gender.NEUTRAL)
+                        .filter(entry -> entry.getKey().getGender() == gender)
                         .collect(
                                 Collectors.toMap(
                                         Map.Entry::getKey, Map.Entry::getValue, (k, v) -> k, LinkedHashMap::new
@@ -223,7 +225,8 @@ public class AvatarGeneratorService {
 
     private BeardComponent resolveRandomBeard() {
         return AvatarComponentsProvider.beard.get(
-                BeardType.values()[RANDOM.nextInt(BeardType.values().length)]
+                    BeardType.NED_KELLY
+//                BeardType.values()[RANDOM.nextInt(BeardType.values().length)]
         );
     }
 
