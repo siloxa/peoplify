@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/switches.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/reset.css">
 
@@ -149,24 +151,21 @@
                 </div>
                 <div class="generate-input">
                     <div class="generate-input-1">
-                        <select class="shadow border">
+                        <select class="form-control gender-select shadow border">
                             <option selected disabled hidden>Gender</option>
                             <option value="">asdfh</option>
                         </select>
                     </div>
                     <div class="generate-input-1">
-                        <select class="shadow border">
-                            <option selected disabled hidden>Gender</option>
-                        </select>
-                    </div>
-                    <div class="generate-input-1">
-                        <select class="shadow border">
-                            <option selected disabled hidden>Gender</option>
+                        <select class="form-control language-select shadow border">
+                            <option selected disabled hidden>Language</option>
                         </select>
                     </div>
                     <div class="generate-input-2">
-                        <p></p>
-                        <p></p>
+                        <label class="switch s-primary mr-2">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
                     </div>
                 </div>
                 <div class="generate-button" >
@@ -298,5 +297,9 @@
             <p>Peoplify. <a href="">Licence MIT</a>. © 2023</p>
         </div>
     </section>
+
+    <script src="assets/js/libs/jquery-3.1.1.min.js"></script>
+    <script src="assets/plugins/select2/select2.min.js"></script>
+    <script src="assets/js/select.js"></script>
 </body>
 </html>

@@ -235,9 +235,11 @@
     margin-top: 24px;
     display: flex;
 }
-.generate-input .generate-input-1 select{
+.generate-input .generate-input-1{
     width: 320px;
     height: 48px;
+}
+.generate-input .generate-input-1 select{
     margin-top: 8px;
     margin-right: 32px;
     font-family: Rubik;
