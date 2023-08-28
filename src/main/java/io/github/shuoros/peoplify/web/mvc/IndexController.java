@@ -16,6 +16,8 @@ public class IndexController {
     public String index(Model model) {
         model.addAttribute("genders", Arrays.stream(Gender.values()).map(Gender::getGender).collect(Collectors.toList()));
         model.addAttribute("languages", Arrays.stream(Language.values()).map(Language::getLanguage).collect(Collectors.toList()));
+        model.addAttribute("firstname", "Shayan");
+        model.addAttribute("lastname", "Mahjoub");
         return "index";
     }
 }

@@ -28,3 +28,14 @@ function handleFetchAvatarResponse(data) {
     downloadAvatarButton.download = "avatar.png";
 }
 
+function copy(id) {
+    var input = document.getElementById(id);
+    input.select();
+    try {
+        return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+    } catch (ex) {
+        console.warn("Copy to clipboard failed.", ex);
+        return prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    }
+}
+
