@@ -51,7 +51,7 @@ public class AvatarComponentsProvider {
                 BeardType.FORK, buildBeardComponent("beard-fork", 271, 355),
                 BeardType.CHIN_TRAP, buildBeardComponent("beard-chin-trap", 161, 267),
                 BeardType.GARIBALDI, buildBeardComponent("beard-garibaldi", 161, 280),
-                BeardType.NED_KELLY, buildBeardComponent("beard-ned-kelly", 175, 260)
+                BeardType.NED_KELLY, buildBeardComponent("beard-ned-kelly", 174, 250)
         );
         cloth = Map.of(
                 ClothColor.BLACK, buildClothComponent("cloth-black"),

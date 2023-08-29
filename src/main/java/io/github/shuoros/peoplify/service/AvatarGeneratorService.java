@@ -88,11 +88,11 @@ public class AvatarGeneratorService {
     }
 
     private void renderBeard(final Graphics2D graphics, final AvatarRequest avatarRequest) {
-//        if (avatarRequest.getGender() == Gender.MALE && wightedRandom(50)) {
+        if (avatarRequest.getGender() == Gender.MALE && wightedRandom(50)) {
             final BeardComponent beard = selectBeard(avatarRequest);
             final BufferedImage beardImage = selectBeardColor(avatarRequest, beard);
             graphics.drawImage(beardImage, beard.getX(), beard.getY(), null);
-//        }
+        }
     }
 
     private void renderHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
