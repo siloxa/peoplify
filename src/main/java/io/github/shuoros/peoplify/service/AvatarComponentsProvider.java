@@ -13,9 +13,10 @@ import java.util.Map;
 public class AvatarComponentsProvider {
 
     protected static final Map<BodyColor, BodyComponent> body;
-    protected static final Map<FaceExpression, FaceComponent> face;
+    protected static final Map<FaceType, FaceComponent> face;
     protected static final Map<HairType, HairComponent> hair;
     protected static final Map<BeardType, HairComponent> beard;
+    protected static final Map<MustacheType, HairComponent> mustache;
     protected static final Map<ClothColor, ClothComponent> cloth;
     protected static final List<OtherComponent> glasses;
     protected static final List<OtherComponent> earing;
@@ -34,7 +35,8 @@ public class AvatarComponentsProvider {
                 BodyColor.WHITE, buildBodyComponent("body-white")
         );
         face = Map.of(
-                FaceExpression.HAPPY, buildFaceComponent("face-happy")
+                FaceType.NORMAL, buildFaceComponent("face-normal"),
+                FaceType.FRECKLES, buildFaceComponent("face-freckles")
         );
         hair = Map.of(
                 HairType.SEMI_BALD, buildHairComponent("hair-semi-bald", 170, 100),
@@ -52,6 +54,12 @@ public class AvatarComponentsProvider {
                 BeardType.CHIN_TRAP, buildHairComponent("beard-chin-trap", 161, 267),
                 BeardType.GARIBALDI, buildHairComponent("beard-garibaldi", 161, 280),
                 BeardType.NED_KELLY, buildHairComponent("beard-ned-kelly", 174, 250)
+        );
+        mustache = Map.of(
+                MustacheType.CHEVRON, buildHairComponent("mustache-chevron", 254, 272),
+                MustacheType.WALRUS, buildHairComponent("mustache-walrus", 254, 272),
+                MustacheType.HANDLEBAR, buildHairComponent("mustache-handlebar", 254, 272),
+                MustacheType.POIROT, buildHairComponent("mustache-poirot", 272, 280)
         );
         cloth = Map.of(
                 ClothColor.BLACK, buildClothComponent("cloth-black"),

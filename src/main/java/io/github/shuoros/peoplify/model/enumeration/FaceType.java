@@ -1,6 +1,7 @@
 package io.github.shuoros.peoplify.model.enumeration;
 
-public enum FaceExpression {
+public enum FaceType {
 
-    HAPPY
+    NORMAL,
+    FRECKLES
 }

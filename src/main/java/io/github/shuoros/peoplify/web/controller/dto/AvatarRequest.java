@@ -9,10 +9,12 @@ public class AvatarRequest {
     private Integer size;
     private Gender gender;
     private BodyColor bodyColor;
-    private FaceExpression faceExpression;
+    private FaceType faceType;
     private HairType hairType;
     private HairColor hairColor;
     private BeardType beardType;
     private HairColor beardColor;
+    private MustacheType mustacheType;
+    private HairColor mustacheColor;
     private ClothColor clothColor;
 }

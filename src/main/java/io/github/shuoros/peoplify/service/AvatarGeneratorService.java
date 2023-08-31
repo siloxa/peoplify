@@ -11,10 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -77,7 +74,7 @@ public class AvatarGeneratorService {
 
     private void renderFace(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         final FaceComponent face = selectFace(avatarRequest);
-        renderBeard(graphics, avatarRequest);
+        renderFacialHair(graphics, avatarRequest);
         graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
         renderEaring(graphics);
         renderScar(graphics);
@@ -87,12 +84,32 @@ public class AvatarGeneratorService {
         renderGlasses(graphics);
     }
 
-    private void renderBeard(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+    private void renderFacialHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        final Optional<BeardType> beardType = renderBeard(graphics, avatarRequest);
+        renderMustache(graphics, avatarRequest, beardType);
+    }
+
+    private Optional<BeardType> renderBeard(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         if (avatarRequest.getGender() == Gender.MALE && wightedRandom(50)) {
-            final HairComponent beard = selectBeard(avatarRequest);
+            final Map.Entry<BeardType, HairComponent> beardWithType = selectBeard(avatarRequest);
+            final HairComponent beard = beardWithType.getValue();
             final BufferedImage beardImage = selectBeardColor(avatarRequest, beard);
             graphics.drawImage(beardImage, beard.getX(), beard.getY(), null);
+            return Optional.ofNullable(beardWithType.getKey());
         }
+        return Optional.empty();
+    }
+
+    private void renderMustache(final Graphics2D graphics, final AvatarRequest avatarRequest, final Optional<BeardType> beardType) {
+        if (canHaveMustache(beardType) && avatarRequest.getGender() == Gender.MALE && wightedRandom(50)) {
+            final HairComponent mustache = selectMustache(avatarRequest);
+            final BufferedImage mustacheImage = selectMustacheColor(avatarRequest, mustache);
+            graphics.drawImage(mustacheImage, mustache.getX(), mustache.getY(), null);
+        }
+    }
+
+    private boolean canHaveMustache(final Optional<BeardType> beardType) {
+        return beardType.isEmpty() || (beardType.isPresent() && beardType.get() != BeardType.GARIBALDI && beardType.get() != BeardType.NED_KELLY);
     }
 
     private void renderHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
@@ -172,16 +189,16 @@ public class AvatarGeneratorService {
     }
 
     private FaceComponent selectFace(AvatarRequest avatarRequest) {
-        return avatarRequest.getFaceExpression() != null ? resolveFace(avatarRequest.getFaceExpression()) : resolveRandomFace();
+        return avatarRequest.getFaceType() != null ? resolveFace(avatarRequest.getFaceType()) : resolveRandomFace();
     }
 
-    private FaceComponent resolveFace(final FaceExpression faceExpression) {
-        return AvatarComponentsProvider.face.get(faceExpression);
+    private FaceComponent resolveFace(final FaceType faceType) {
+        return AvatarComponentsProvider.face.get(faceType);
     }
 
     private FaceComponent resolveRandomFace() {
         return AvatarComponentsProvider.face.get(
-                FaceExpression.values()[RANDOM.nextInt(FaceExpression.values().length)]
+                FaceType.values()[RANDOM.nextInt(FaceType.values().length)]
         );
     }
 
@@ -215,17 +232,35 @@ public class AvatarGeneratorService {
         return avatarRequest.getBeardColor() != null ? beard.getImage(avatarRequest.getBeardColor()) : beard.getImage();
     }
 
-    private HairComponent selectBeard(final AvatarRequest avatarRequest) {
+    private Map.Entry<BeardType, HairComponent> selectBeard(final AvatarRequest avatarRequest) {
         return avatarRequest.getBeardType() != null ? resolveBeard(avatarRequest.getBeardType()) : resolveRandomBeard();
     }
 
-    private HairComponent resolveBeard(final BeardType beardType) {
-        return AvatarComponentsProvider.beard.get(beardType);
+    private Map.Entry<BeardType, HairComponent> resolveBeard(final BeardType beardType) {
+        return Map.entry(beardType, AvatarComponentsProvider.beard.get(beardType));
     }
 
-    private HairComponent resolveRandomBeard() {
-        return AvatarComponentsProvider.beard.get(
-                BeardType.values()[RANDOM.nextInt(BeardType.values().length)]
+    private Map.Entry<BeardType, HairComponent> resolveRandomBeard() {
+        final BeardType beardType = BeardType.values()[RANDOM.nextInt(BeardType.values().length)];
+        return Map.entry(beardType, AvatarComponentsProvider.beard.get(beardType));
+    }
+
+    private BufferedImage selectMustacheColor(final AvatarRequest avatarRequest, final HairComponent mustache) {
+        return avatarRequest.getMustacheColor() != null ? mustache.getImage(avatarRequest.getMustacheColor()) : mustache.getImage();
+    }
+
+    private HairComponent selectMustache(final AvatarRequest avatarRequest) {
+        return avatarRequest.getMustacheType() != null ? resolveMustache(avatarRequest.getMustacheType()) : resolveRandomMustache();
+    }
+
+    private HairComponent resolveMustache(final MustacheType mustacheType) {
+        return AvatarComponentsProvider.mustache.get(mustacheType);
+    }
+
+    private HairComponent resolveRandomMustache() {
+        return AvatarComponentsProvider.mustache.get(
+                MustacheType.HANDLEBAR
+//                MustacheType.values()[RANDOM.nextInt(MustacheType.values().length)]
         );
     }
 

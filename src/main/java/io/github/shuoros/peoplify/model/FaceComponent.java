@@ -7,11 +7,11 @@ public class FaceComponent extends AbstractComponent {
 
     @Override
     public Integer getX() {
-        return 216;
+        return 226;
     }
 
     @Override
     public Integer getY() {
-        return 183;
+        return 190;
     }
 }

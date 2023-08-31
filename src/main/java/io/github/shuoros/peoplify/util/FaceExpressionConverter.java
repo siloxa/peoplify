@@ -1,16 +1,16 @@
 package io.github.shuoros.peoplify.util;
 
-import io.github.shuoros.peoplify.model.enumeration.FaceExpression;
+import io.github.shuoros.peoplify.model.enumeration.FaceType;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
 @Component
-public class FaceExpressionConverter implements Converter<String, FaceExpression> {
+public class FaceExpressionConverter implements Converter<String, FaceType> {
 
     @Override
-    public FaceExpression convert(String source) {
-        return FaceExpression.valueOf(source.toUpperCase(Locale.ROOT));
+    public FaceType convert(String source) {
+        return FaceType.valueOf(source.toUpperCase(Locale.ROOT));
     }
 }
