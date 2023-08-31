@@ -89,7 +89,7 @@ public class AvatarGeneratorService {
 
     private void renderBeard(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         if (avatarRequest.getGender() == Gender.MALE && wightedRandom(50)) {
-            final BeardComponent beard = selectBeard(avatarRequest);
+            final HairComponent beard = selectBeard(avatarRequest);
             final BufferedImage beardImage = selectBeardColor(avatarRequest, beard);
             graphics.drawImage(beardImage, beard.getX(), beard.getY(), null);
         }
@@ -211,22 +211,21 @@ public class AvatarGeneratorService {
         return new ArrayList<>(hairs.values()).get(RANDOM.nextInt(hairs.size()));
     }
 
-    private BufferedImage selectBeardColor(final AvatarRequest avatarRequest, final BeardComponent beard) {
+    private BufferedImage selectBeardColor(final AvatarRequest avatarRequest, final HairComponent beard) {
         return avatarRequest.getBeardColor() != null ? beard.getImage(avatarRequest.getBeardColor()) : beard.getImage();
     }
 
-    private BeardComponent selectBeard(final AvatarRequest avatarRequest) {
+    private HairComponent selectBeard(final AvatarRequest avatarRequest) {
         return avatarRequest.getBeardType() != null ? resolveBeard(avatarRequest.getBeardType()) : resolveRandomBeard();
     }
 
-    private BeardComponent resolveBeard(final BeardType beardType) {
+    private HairComponent resolveBeard(final BeardType beardType) {
         return AvatarComponentsProvider.beard.get(beardType);
     }
 
-    private BeardComponent resolveRandomBeard() {
+    private HairComponent resolveRandomBeard() {
         return AvatarComponentsProvider.beard.get(
-                    BeardType.NED_KELLY
-//                BeardType.values()[RANDOM.nextInt(BeardType.values().length)]
+                BeardType.values()[RANDOM.nextInt(BeardType.values().length)]
         );
     }
 
