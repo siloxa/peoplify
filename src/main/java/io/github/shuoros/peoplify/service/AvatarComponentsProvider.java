@@ -17,8 +17,8 @@ public class AvatarComponentsProvider {
     protected static final Map<HairType, HairComponent> hair;
     protected static final Map<BeardType, HairComponent> beard;
     protected static final Map<MustacheType, HairComponent> mustache;
-    protected static final Map<ClothColor, ClothComponent> cloth;
-    protected static final List<OtherComponent> glasses;
+    protected static final Map<AccessoryColor, ClothComponent> cloth;
+    protected static final Map<GlassesType, AccessoryComponent> glasses;
     protected static final List<OtherComponent> earing;
     protected static OtherComponent mole;
     protected static OtherComponent headband;
@@ -63,20 +63,20 @@ public class AvatarComponentsProvider {
                 MustacheType.POIROT, buildHairComponent("mustache-poirot", 272, 276)
         );
         cloth = Map.of(
-                ClothColor.BLACK, buildClothComponent("cloth-black"),
-                ClothColor.BLUE, buildClothComponent("cloth-blue"),
-                ClothColor.GRAY, buildClothComponent("cloth-gray"),
-                ClothColor.GREEN, buildClothComponent("cloth-green"),
-                ClothColor.ORANGE, buildClothComponent("cloth-orange"),
-                ClothColor.PINK, buildClothComponent("cloth-pink"),
-                ClothColor.PURPLE, buildClothComponent("cloth-purple"),
-                ClothColor.RED, buildClothComponent("cloth-red"),
-                ClothColor.WHITE, buildClothComponent("cloth-white"),
-                ClothColor.YELLOW, buildClothComponent("cloth-yellow")
+                AccessoryColor.BLACK, buildClothComponent("cloth-black"),
+                AccessoryColor.BLUE, buildClothComponent("cloth-blue"),
+                AccessoryColor.GRAY, buildClothComponent("cloth-gray"),
+                AccessoryColor.GREEN, buildClothComponent("cloth-green"),
+                AccessoryColor.ORANGE, buildClothComponent("cloth-orange"),
+                AccessoryColor.PINK, buildClothComponent("cloth-pink"),
+                AccessoryColor.PURPLE, buildClothComponent("cloth-purple"),
+                AccessoryColor.RED, buildClothComponent("cloth-red"),
+                AccessoryColor.WHITE, buildClothComponent("cloth-white"),
+                AccessoryColor.YELLOW, buildClothComponent("cloth-yellow")
         );
-        glasses = List.of(
-                buildOtherComponent("glasses-0", 170, 166),
-                buildOtherComponent("glasses-1", 152, 154)
+        glasses = Map.of(
+                GlassesType.ROUND, buildAccessoryComponent("glasses-round", 170, 166),
+                GlassesType.CAT_EYE, buildAccessoryComponent("glasses-cat-eye", 152, 154)
         );
         earing = List.of(
                 buildOtherComponent("earing-0", 154, 264),
@@ -112,6 +112,27 @@ public class AvatarComponentsProvider {
                                 HairColor.PINK, loadImage(name + "-pink"),
                                 HairColor.WHITE, loadImage(name + "-white")
                         )
+                )
+                .x(x)
+                .y(y)
+                .build();
+    }
+
+    private static AccessoryComponent buildAccessoryComponent(String name, Integer x, Integer y) {
+        return AccessoryComponent.builder()
+                .colors(
+                        Map.of(
+                                AccessoryColor.BLACK, loadImage(name + "-black"),
+                                AccessoryColor.BLUE, loadImage(name + "-blue"),
+                                AccessoryColor.GRAY, loadImage(name + "-gray"),
+                                AccessoryColor.GREEN, loadImage(name + "-green"),
+                                AccessoryColor.ORANGE, loadImage(name + "-orange"),
+                                AccessoryColor.PINK, loadImage(name + "-pink"),
+                                AccessoryColor.PURPLE, loadImage(name + "-purple"),
+                                AccessoryColor.RED, loadImage(name + "-red"),
+                                AccessoryColor.WHITE, loadImage(name + "-white"),
+                                AccessoryColor.YELLOW, loadImage(name + "-yellow")
+                                )
                 )
                 .x(x)
                 .y(y)

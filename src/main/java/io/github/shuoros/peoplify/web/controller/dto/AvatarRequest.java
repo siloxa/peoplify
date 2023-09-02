@@ -16,5 +16,7 @@ public class AvatarRequest {
     private HairColor beardColor;
     private MustacheType mustacheType;
     private HairColor mustacheColor;
-    private ClothColor clothColor;
+    private AccessoryColor clothColor;
+    private GlassesType glassesType;
+    private AccessoryColor glassesColor;
 }

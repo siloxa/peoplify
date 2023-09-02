@@ -81,7 +81,7 @@ public class AvatarGeneratorService {
 //        renderHeadband(graphics);
         renderMole(graphics);
         renderHair(graphics, avatarRequest);
-        renderGlasses(graphics);
+        renderGlasses(graphics, avatarRequest);
     }
 
     private void renderFacialHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
@@ -120,8 +120,8 @@ public class AvatarGeneratorService {
 
     private void renderEaring(final Graphics2D graphics) {
         if (wightedRandom(25)) {
-            final OtherComponent glasses = resolveRandomEaring();
-            graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
+            final OtherComponent earing = resolveRandomEaring();
+            graphics.drawImage(earing.getImage(), earing.getX(), earing.getY(), null);
         }
     }
 
@@ -158,10 +158,11 @@ public class AvatarGeneratorService {
         }
     }
 
-    private void renderGlasses(final Graphics2D graphics) {
+    private void renderGlasses(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         if (wightedRandom(25)) {
-            final OtherComponent glasses = resolveRandomGlasses();
-            graphics.drawImage(glasses.getImage(), glasses.getX(), glasses.getY(), null);
+            final AccessoryComponent glasses = selectGlasses(avatarRequest);
+            final BufferedImage glassesImage = selectGlassesColor(avatarRequest, glasses);
+            graphics.drawImage(glassesImage, glasses.getX(), glasses.getY(), null);
         }
     }
 
@@ -269,9 +270,21 @@ public class AvatarGeneratorService {
         );
     }
 
-    private OtherComponent resolveRandomGlasses() {
+    private BufferedImage selectGlassesColor(final AvatarRequest avatarRequest, final AccessoryComponent glasses) {
+        return avatarRequest.getGlassesColor() != null ? glasses.getImage(avatarRequest.getGlassesColor()) : glasses.getImage();
+    }
+
+    private AccessoryComponent selectGlasses(final AvatarRequest avatarRequest) {
+        return avatarRequest.getGlassesType() != null ? resolveGlasses(avatarRequest.getGlassesType()) : resolveRandomGlasses();
+    }
+
+    private AccessoryComponent resolveGlasses(final GlassesType glassesType) {
+        return AvatarComponentsProvider.glasses.get(glassesType);
+    }
+
+    private AccessoryComponent resolveRandomGlasses() {
         return AvatarComponentsProvider.glasses.get(
-                RANDOM.nextInt(AvatarComponentsProvider.glasses.size())
+                GlassesType.values()[RANDOM.nextInt(GlassesType.values().length)]
         );
     }
 
@@ -279,13 +292,13 @@ public class AvatarGeneratorService {
         return avatarRequest.getClothColor() != null ? resolveCloth(avatarRequest.getClothColor()) : resolveRandomCloth();
     }
 
-    private ClothComponent resolveCloth(final ClothColor clothColor) {
+    private ClothComponent resolveCloth(final AccessoryColor clothColor) {
         return AvatarComponentsProvider.cloth.get(clothColor);
     }
 
     private ClothComponent resolveRandomCloth() {
         return AvatarComponentsProvider.cloth.get(
-                ClothColor.values()[RANDOM.nextInt(ClothColor.values().length)]
+                AccessoryColor.values()[RANDOM.nextInt(AccessoryColor.values().length)]
         );
     }
 
