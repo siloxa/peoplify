@@ -45,7 +45,8 @@ public class AvatarComponentsProvider {
                 HairType.PONY_TAIL, buildHairComponent("hair-pony-tail", 169, 10),
                 HairType.CENTER_PART, buildHairComponent("hair-center-part", 174, 44),
                 HairType.SIDE_PART, buildHairComponent("hair-side-part", 174, 44),
-                HairType.CORNROWS, buildHairComponent("hair-cornrows", 140, 0)
+                HairType.CORNROWS, buildHairComponent("hair-cornrows", 140, 0),
+                HairType.BALD, buildHairComponent("hair-bald", 235, 55)
         );
         beard = Map.of(
                 BeardType.GOAT_PATCH, buildHairComponent("beard-goat-patch", 277, 360),
@@ -56,10 +57,10 @@ public class AvatarComponentsProvider {
                 BeardType.NED_KELLY, buildHairComponent("beard-ned-kelly", 174, 250)
         );
         mustache = Map.of(
-                MustacheType.CHEVRON, buildHairComponent("mustache-chevron", 254, 272),
-                MustacheType.WALRUS, buildHairComponent("mustache-walrus", 254, 272),
-                MustacheType.HANDLEBAR, buildHairComponent("mustache-handlebar", 254, 272),
-                MustacheType.POIROT, buildHairComponent("mustache-poirot", 272, 280)
+                MustacheType.CHEVRON, buildHairComponent("mustache-chevron", 254, 268),
+                MustacheType.WALRUS, buildHairComponent("mustache-walrus", 254, 268),
+                MustacheType.HANDLEBAR, buildHairComponent("mustache-handlebar", 254, 268),
+                MustacheType.POIROT, buildHairComponent("mustache-poirot", 272, 276)
         );
         cloth = Map.of(
                 ClothColor.BLACK, buildClothComponent("cloth-black"),

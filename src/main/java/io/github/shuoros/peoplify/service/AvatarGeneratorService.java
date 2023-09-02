@@ -259,8 +259,7 @@ public class AvatarGeneratorService {
 
     private HairComponent resolveRandomMustache() {
         return AvatarComponentsProvider.mustache.get(
-                MustacheType.HANDLEBAR
-//                MustacheType.values()[RANDOM.nextInt(MustacheType.values().length)]
+                MustacheType.values()[RANDOM.nextInt(MustacheType.values().length)]
         );
     }
 

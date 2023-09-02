@@ -12,6 +12,6 @@ public class FaceComponent extends AbstractComponent {
 
     @Override
     public Integer getY() {
-        return 190;
+        return 185;
     }
 }
