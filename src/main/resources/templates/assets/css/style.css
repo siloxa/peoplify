@@ -26,7 +26,25 @@
     border-radius: 32px;
     border: 1px solid  #EDEDED;
 }
-
+.generate-select{
+    width: 320px;
+    height: 48px;
+    margin-top: 8px;
+    margin-right: 32px;
+    font-family: Rubik;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    padding-left: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><g id="Tail icon"><path id="Vector" d="M10.5 10.9764L14.625 6.85141L15.8033 8.02974L10.5 13.3331L5.19666 8.02974L6.37499 6.85141L10.5 10.9764Z" fill="black"/></g></svg>');
+    background-repeat: no-repeat;
+    background-position: 287px 14px;
+}
 #header .header{
     display: flex;
     justify-content: space-between;
@@ -82,6 +100,9 @@
 #display .display .display-image{
     text-align: center;
     margin-bottom: 24px;
+}
+#display .display .display-image img{
+    border-radius: 12px;
 }
 #display .display .display-button{
     position: relative;
@@ -230,7 +251,8 @@
     font-weight: 500;
 }
 .generate-input{
-    width: 100%;
+    width: 880px;
+    margin: auto;
     height: 60px;
     margin-top: 24px;
     display: flex;
@@ -238,21 +260,88 @@
 .generate-input .generate-input-1{
     width: 320px;
     height: 48px;
-}
-.generate-input .generate-input-1 select{
-    margin-top: 8px;
     margin-right: 32px;
-    font-family: Rubik;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    text-align: left;
-    padding-left: 8px;
+}
+.generate-input .generate-input-1 select svg{
+    top: 50%;
+    left: 50%;
+    background-color: #000;
 }
 .generate-input .generate-input-2{
-    display: flex;
+    width: 320px;
+    height: 48px;
+    margin-right: 32px;
 }
+.generate-input .generate-input-3{
+    display: flex;
+    width: 320px;
+    height: 48px;
+}
+.generate-input .generate-input-3 p{
+    color: #000;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 14px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    padding: 2px;
+    margin: auto;
+    margin-top: 14px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background: linear-gradient(90deg, #5E3AF1 1.14%, #947AFF 73.86%);  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }  
 #generate .generate .generate-button{
     width: 100%;
     margin: auto;
@@ -372,6 +461,12 @@
     height: 271px;
     text-align: center;
     padding: 48px 0;
+    border-radius: 12px;
+}
+#about .about .about-image img{
+    width: 971px;
+    height: 271px;
+    border-radius: 12px;
 }
 #footer{
     width: 100%;
@@ -385,9 +480,10 @@
     display: flex;
     margin-left: 60px;
 }
-#footer .footer .sections p{
+#footer .footer .sections p a{
     margin-right: 16px;
     color: #000;
+    text-decoration: none;
     text-align: center;
     font-family: Rubik;
     font-size: 16px;
@@ -395,6 +491,8 @@
     font-weight: 500;
     line-height: 24px;
     letter-spacing: -0.16px;
+    cursor: pointer;
+ 
 }
 #footer .footer .social{
     display: flex;
