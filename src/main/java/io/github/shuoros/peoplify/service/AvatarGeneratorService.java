@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 @Service
 public class AvatarGeneratorService {
 
+    // TODO: tattoo must be rendered on left arm
+    // TODO: hair 9, 10 for men
+
     private static final int CANVAS_SIZE = 600;
     private static final Random RANDOM = new Random();
 
