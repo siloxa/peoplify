@@ -103,6 +103,7 @@
 }
 #display .display .display-image img{
     border-radius: 12px;
+    width: 224px;
 }
 #display .display .display-button{
     position: relative;
