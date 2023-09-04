@@ -73,6 +73,7 @@ public class AvatarGeneratorService {
     private void renderBody(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         final BodyComponent body = selectBody(avatarRequest);
         graphics.drawImage(body.getImage(), body.getX(), body.getY(), null);
+        renderTattoo(graphics);
     }
 
     private void renderFace(final Graphics2D graphics, final AvatarRequest avatarRequest) {
@@ -85,6 +86,17 @@ public class AvatarGeneratorService {
         renderMole(graphics);
         renderHair(graphics, avatarRequest);
         renderGlasses(graphics, avatarRequest);
+    }
+
+    private void renderTattoo(final Graphics2D graphics) {
+        if (wightedRandom(25)) {
+            graphics.drawImage(
+                    AvatarComponentsProvider.tattoo.getImage(),
+                    AvatarComponentsProvider.tattoo.getX(),
+                    AvatarComponentsProvider.tattoo.getY(),
+                    null
+            );
+        }
     }
 
     private void renderFacialHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {

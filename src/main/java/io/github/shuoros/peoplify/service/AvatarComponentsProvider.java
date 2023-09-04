@@ -23,7 +23,7 @@ public class AvatarComponentsProvider {
     protected static OtherComponent mole;
     protected static OtherComponent headband;
     protected static OtherComponent scar;
-
+    protected static OtherComponent tattoo;
 
     static {
         body = Map.of(
@@ -86,6 +86,7 @@ public class AvatarComponentsProvider {
         mole = buildOtherComponent("mole", 330, 250);
         headband = buildOtherComponent("headband", 176, 110);
         scar = buildOtherComponent("scar", 240, 140);
+        tattoo = buildOtherComponent("tattoo", 435, 540);
     }
 
     private static BodyComponent buildBodyComponent(String name) {

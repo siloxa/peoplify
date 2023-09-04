@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @Controller
-public class IndexController {
+public class IndexMVC {
 
     @RequestMapping(value = "")
     public String index(Model model) {
