@@ -6,7 +6,6 @@ function fetchAvatar() {
     const req = new XMLHttpRequest();
     req.getResponseHeader('Content-Type', 'image/png');
     const url = new URL(window.location.origin + '/api/generate/avatar');
-    url.searchParams.set('size', '224');
     req.open("GET", url, true);
     req.responseType = "arraybuffer";
 
