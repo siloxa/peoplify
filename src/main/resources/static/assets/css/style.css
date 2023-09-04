@@ -45,11 +45,8 @@
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><g id="Tail icon"><path id="Vector" d="M10.5 10.9764L14.625 6.85141L15.8033 8.02974L10.5 13.3331L5.19666 8.02974L6.37499 6.85141L10.5 10.9764Z" fill="black"/></g></svg>');
     background-repeat: no-repeat;
     background-position: 287px 14px;
+    outline: none;
 }
-.generate-select::focus {
-     border-color: linear-gradient(90deg, #5E3AF1 0%, #947AFF 100%);
- }
-
 #header .header{
     display: flex;
     justify-content: space-between;
@@ -153,6 +150,7 @@
     top: 41%;
     padding: 14px 15px;
     border-left: 1px solid #EDEDED;
+    cursor: pointer;
 }
 #form .form .form-left form label{
     font-family: Rubik;
@@ -160,10 +158,12 @@
     font-size: 16px;
     line-height: 24px;
 }
-#form .form .form-left form input{
-    width: 320px;
+.name-input{
+    width: 304px;
     height: 48px;
+    padding-left: 16px;
     margin-top: 8px;
+    background-color: white;
 }
 #form .form .form-left form input::placeholder{
     color: #000;
@@ -203,11 +203,6 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-}
-#form .form .form-right form input{
-    width: 320px;
-    height: 48px;
-    margin-top: 8px;
 }
 #form .form .form-right form input::placeholder{
     color: #000;
@@ -267,6 +262,10 @@
     width: 320px;
     height: 48px;
     margin-right: 32px;
+}
+
+select:focus {
+    border: 3px solid #5E3AF1 
 }
 .generate-input .generate-input-1 select svg{
     top: 50%;
@@ -328,7 +327,7 @@
     -webkit-transition: .4s;
     transition: .4s;
   }
-  input:checked + .slider {
+  input + .slider {
     background: linear-gradient(90deg, #5E3AF1 1.14%, #947AFF 73.86%);  }
   
   input:focus + .slider {
@@ -336,9 +335,9 @@
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
   }
   
   .slider.round {
@@ -394,6 +393,9 @@
 #developers .developers .developers-member{
     display: flex;
     text-align: center;
+}
+#developers .developers .developers-member a{
+    text-decoration: none;
 }
 #developers .developers .developers-member div{
     width: 384px;
@@ -453,7 +455,6 @@
     margin-bottom: 24px;
 }
 #about .about .about-text p{
-    color: #000;
     text-align: center;
     font-family: Rubik;
     font-size: 18px;
@@ -461,6 +462,9 @@
     font-weight: 400;
     line-height: 26px; /* 144.444% */
     letter-spacing: -0.216px;
+}
+#about .about .about-text p a{
+    color: #000;
 }
 #about .about .about-image{
     width: 100%;
@@ -514,7 +518,6 @@
     background: rgba(117, 91, 223, 0.10);
 }
 #copyright .copyright a {
-    text-decoration: none;
     color: #757575;
 }
 #copyright .copyright p{
