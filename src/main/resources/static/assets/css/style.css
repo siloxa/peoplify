@@ -39,12 +39,17 @@
     text-align: left;
     padding-left: 8px;
     appearance: none;
+    background-color: #fff;
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><g id="Tail icon"><path id="Vector" d="M10.5 10.9764L14.625 6.85141L15.8033 8.02974L10.5 13.3331L5.19666 8.02974L6.37499 6.85141L10.5 10.9764Z" fill="black"/></g></svg>');
     background-repeat: no-repeat;
     background-position: 287px 14px;
 }
+.generate-select::focus {
+     border-color: linear-gradient(90deg, #5E3AF1 0%, #947AFF 100%);
+ }
+
 #header .header{
     display: flex;
     justify-content: space-between;
@@ -459,7 +464,7 @@
 }
 #about .about .about-image{
     width: 100%;
-    height: 271px;
+    height: 367px;
     text-align: center;
     padding: 48px 0;
     border-radius: 12px;
