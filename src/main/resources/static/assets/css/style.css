@@ -1,6 +1,14 @@
 html{
     scroll-behavior: smooth;
 }
+.colored-toast.swal2-icon-success {
+  background-color: white !important;
+  font-family: Rubik !important;
+}
+.colored-toast.swal2-icon-error {
+  background-color: white !important;
+  font-family: Rubik !important;
+}
 #header{
     width: 100%;
     height: 64px;
