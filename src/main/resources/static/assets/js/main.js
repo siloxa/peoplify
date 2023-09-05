@@ -1,52 +1,49 @@
-$(function() {
-   fetchAvatar(false);
+$(function () {
+  localStorage.setItem('isLoading', true);
+  avatarLoader();
+  fetchAvatar(false);
 });
 
-function fetchAvatar(alarm) {
-    const req = new XMLHttpRequest();
-    req.getResponseHeader('Content-Type', 'image/png');
-    const url = new URL(window.location.origin + '/api/generate/avatar');
-    req.open("GET", url, true);
-    req.responseType = "arraybuffer";
 
-    req.onload = (event) => {
-      const data = req.response;
-      if(req.status == 200) {
-        if(alarm) {
-            swal("Avatar Generated!", 'success');
+// This function has been written with the help of Ali https://github.com/ralia79
+async function fetchAvatar(alarm) {
+
+  await fetch(window.location.origin + '/api/generate/avatar')
+    .then(async res => {
+      if (res.status === 200) {
+        if (alarm) {
+          swal("Avatar Generated!", 'success');
         }
-        handleFetchAvatarResponse(data);
+        await timer(1000);
+        localStorage.setItem('isLoading', false);
+        await handleFetchAvatarResponse(res);
       } else {
         swal("Something's wrong with server!", 'error');
       }
-    };
-
-    req.onerror = (event) => {
-        swal("Couldn't reach the server!", 'error');
-    };
-
-    req.send();
+    })
+    .catch(err => {
+      swal("Couldn't reach the server!", 'error');
+    });
 }
 
-function handleFetchAvatarResponse(data) {
-    const unit8Array = new Uint8Array(data);
-    const prepareToEncode = String.fromCharCode.apply(null, unit8Array);
-    const dataInBase64 = btoa(prepareToEncode);
-    document.getElementById("avatar").src = "data:image/png;base64," + dataInBase64;
-    var downloadAvatarButton = document.getElementById("download-avatar");
-    downloadAvatarButton.href = "data:image/png;base64," + dataInBase64;
-    downloadAvatarButton.download = "avatar.png";
+async function handleFetchAvatarResponse(data) {
+  const imageBlob = await data.blob();
+  const finalImage = URL.createObjectURL(imageBlob);
+  document.getElementById("avatar").src = finalImage;
+  var downloadAvatarButton = document.getElementById("download-avatar");
+  downloadAvatarButton.href = finalImage;
+  downloadAvatarButton.download = "avatar.png";
 }
 
 function copy(id) {
-    var input = document.getElementById(id);
-    try {
-        document.execCommand("copy");  // Security exception may be thrown by some browsers.
-        swal("Name Copied!", 'success');
-    } catch (ex) {
-        console.warn("Copy to clipboard failed.", ex);
-        swal("Copy to clipboard failed!", 'error');
-    }
+  var input = document.getElementById(id);
+  try {
+    document.execCommand("copy");  // Security exception may be thrown by some browsers.
+    swal("Name Copied!", 'success');
+  } catch (ex) {
+    console.warn("Copy to clipboard failed.", ex);
+    swal("Copy to clipboard failed!", 'error');
+  }
 }
 
 function swal(text, icon) {
