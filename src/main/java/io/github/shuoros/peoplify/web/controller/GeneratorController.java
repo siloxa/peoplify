@@ -33,7 +33,10 @@ public class GeneratorController {
     }
 
     @GetMapping(path = "/name")
-    public Map<NameType, Name> generateName(@RequestParam Language language) {
-        return nameGeneratorService.generateName(language);
+    public Map<NameType, Name> generateName(
+            @RequestParam(required = false) Language language,
+            @RequestParam(required = false) Gender gender
+    ) {
+        return nameGeneratorService.generateName(language, gender);
     }
 }

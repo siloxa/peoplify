@@ -19,7 +19,9 @@ import java.util.Map;
 
 public class NamesProvider {
 
-    protected final static Map<Language, Map<NameType, List<Name>>> names = new HashMap<>();
+    protected final static Map<Language, Map<Gender, List<Name>>> firstnames = new HashMap<>();
+    protected final static Map<Language, List<Name>> lastnames = new HashMap<>();
+
 
     static {
         try (
@@ -28,24 +30,42 @@ public class NamesProvider {
         ) {
             final List<Name> rawNames = parseCSV(csvReader);
             Arrays.asList(Language.values()).forEach(
-                    language ->
-                            names.put(
-                                    language,
-                                    Map.of(
-                                            NameType.FIRST_NAME, gatherNamesByLanguageAndType(rawNames, language, NameType.FIRST_NAME),
-                                            NameType.LAST_NAME, gatherNamesByLanguageAndType(rawNames, language, NameType.LAST_NAME)
-                                    )
-                            )
+                    language -> {
+                        firstnames.put(
+                                language,
+                                Map.of(
+                                        Gender.MALE, gatherFirstNamesByLanguageAndGenderAndType(rawNames, language, Gender.MALE),
+                                        Gender.FEMALE, gatherFirstNamesByLanguageAndGenderAndType(rawNames, language, Gender.FEMALE)
+                                )
+                        );
+                        lastnames.put(
+                                language,
+                                gatherLastNamesByLanguageAndGenderAndType(rawNames, language)
+                        );
+                    }
             );
         } catch (IOException | CsvException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static List<Name> gatherNamesByLanguageAndType(List<Name> rawNames, Language language, NameType nameType) {
+    private static List<Name> gatherFirstNamesByLanguageAndGenderAndType(
+            final List<Name> rawNames,
+            final Language language,
+            final Gender gender) {
         return rawNames
                 .stream()
-                .filter(row -> row.getLanguage() == language && row.getNameType() == nameType)
+                .filter(row -> row.getLanguage() == language
+                        && row.getNameType() == NameType.FIRST_NAME
+                        && row.getGender() == gender
+                )
+                .toList();
+    }
+
+    private static List<Name> gatherLastNamesByLanguageAndGenderAndType(final List<Name> rawNames, final Language language) {
+        return rawNames
+                .stream()
+                .filter(row -> row.getLanguage() == language && row.getNameType() == NameType.LAST_NAME)
                 .toList();
     }
 

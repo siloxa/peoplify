@@ -18,17 +18,10 @@ import java.util.stream.Collectors;
 @Controller
 public class IndexMVC {
 
-    @Autowired
-    private NameGeneratorService nameGeneratorService;
-
     @RequestMapping(value = "")
     public String index(Model model) {
-        final Map<NameType, Name> name = nameGeneratorService.generateNameInRandomLanguage();
-
         model.addAttribute("genders", Arrays.stream(Gender.values()).map(gender -> StringUtils.toPascalCase(gender.name())).collect(Collectors.toList()));
         model.addAttribute("languages", Arrays.stream(Language.values()).map(language -> StringUtils.toPascalCase(language.name())).collect(Collectors.toList()));
-        model.addAttribute("firstname", name.get(NameType.FIRST_NAME).getName());
-        model.addAttribute("lastname", name.get(NameType.LAST_NAME).getName());
         return "index";
     }
 }
