@@ -156,7 +156,7 @@ public class AvatarComponentsProvider {
 
     private static BufferedImage loadImage(String name) {
         try {
-            return ImageIO.read(ResourceUtils.getFile("classpath:static/" + name + ".png"));
+            return ImageIO.read(ResourceUtils.getFile("classpath:static/components/" + name + ".png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
