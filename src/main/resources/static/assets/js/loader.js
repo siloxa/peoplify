@@ -45,50 +45,50 @@ async function avatarLoader() {
 }
 
 async function nameLoader() {
-    while(JSON.parse(localStorage.getItem('isNameLoading'))) {
-        document.getElementById("firstname").value = 
-        alphabet.charAt(randomCharacterOfAlphabet()) + 
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet());
+    while (JSON.parse(localStorage.getItem('isNameLoading'))) {
+        document.getElementById("firstname").value =
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet());
 
-        document.getElementById("lastname").value = 
-        alphabet.charAt(randomCharacterOfAlphabet()) + 
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet());
+        document.getElementById("lastname").value =
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet());
 
         await timer(75);
     }
 }
 
 async function firstNameLoader() {
-    while(JSON.parse(localStorage.getItem('isNameLoading'))) {
-        document.getElementById("firstname").value = 
-        alphabet.charAt(randomCharacterOfAlphabet()) + 
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet());
+    while (JSON.parse(localStorage.getItem('isNameLoading'))) {
+        document.getElementById("firstname").value =
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet());
 
         await timer(75);
     }
 }
 
 async function lastNameLoader() {
-    while(JSON.parse(localStorage.getItem('isNameLoading'))) {
-        document.getElementById("lastname").value = 
-        alphabet.charAt(randomCharacterOfAlphabet()) + 
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet()) +
-        alphabet.charAt(randomCharacterOfAlphabet());
+    while (JSON.parse(localStorage.getItem('isNameLoading'))) {
+        document.getElementById("lastname").value =
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet()) +
+            alphabet.charAt(randomCharacterOfAlphabet());
 
         await timer(75);
     }

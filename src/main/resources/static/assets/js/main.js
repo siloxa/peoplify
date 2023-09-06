@@ -32,10 +32,29 @@ function refreshLastName() {
     fetchLastName(true, gender, language);
 }
 
+function generate() {
+    localStorage.setItem('isAvatarLoading', true);
+    localStorage.setItem('isNameLoading', true);
+    const gendersElement = document.getElementById("genders");
+    const languagesElement = document.getElementById("languages");
+    let gender = gendersElement.options[gendersElement.selectedIndex].text;
+    let language = languagesElement.options[languagesElement.selectedIndex].text;
+    if (gender === 'Gender') {
+        gender = randomGender();
+    }
+    if (language === 'Language') {
+        language = randomLanguage();
+    }
+    avatarLoader();
+    nameLoader();
+    fetchAvatar(true, gender);
+    fetchName(false, gender, language);
+}
+
 
 // This function has been written with the help of Ali https://github.com/ralia79
 async function fetchAvatar(alarm, gender) {
-    const params = new URLSearchParams({gender});
+    const params = new URLSearchParams({ gender });
     await fetch(window.location.origin + '/api/generate/avatar?' + params)
         .then(async res => {
             if (res.status === 200) {
@@ -55,7 +74,7 @@ async function fetchAvatar(alarm, gender) {
 }
 
 async function fetchName(alarm, gender, language) {
-    const params = new URLSearchParams({gender, language});
+    const params = new URLSearchParams({ gender, language });
     await fetch(window.location.origin + '/api/generate/name?' + params)
         .then(async res => {
             if (res.status === 200) {
@@ -75,7 +94,7 @@ async function fetchName(alarm, gender, language) {
 }
 
 async function fetchFirstName(alarm, gender, language) {
-    const params = new URLSearchParams({gender, language});
+    const params = new URLSearchParams({ gender, language });
     await fetch(window.location.origin + '/api/generate/name?' + params)
         .then(async res => {
             if (res.status === 200) {
@@ -95,7 +114,7 @@ async function fetchFirstName(alarm, gender, language) {
 }
 
 async function fetchLastName(alarm, gender, language) {
-    const params = new URLSearchParams({gender, language});
+    const params = new URLSearchParams({ gender, language });
     await fetch(window.location.origin + '/api/generate/name?' + params)
         .then(async res => {
             if (res.status === 200) {
