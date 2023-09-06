@@ -66,6 +66,34 @@ async function nameLoader() {
     }
 }
 
+async function firstNameLoader() {
+    while(JSON.parse(localStorage.getItem('isNameLoading'))) {
+        document.getElementById("firstname").value = 
+        alphabet.charAt(randomCharacterOfAlphabet()) + 
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet());
+
+        await timer(75);
+    }
+}
+
+async function lastNameLoader() {
+    while(JSON.parse(localStorage.getItem('isNameLoading'))) {
+        document.getElementById("lastname").value = 
+        alphabet.charAt(randomCharacterOfAlphabet()) + 
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet()) +
+        alphabet.charAt(randomCharacterOfAlphabet());
+
+        await timer(75);
+    }
+}
+
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

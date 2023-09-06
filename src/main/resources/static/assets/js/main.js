@@ -9,6 +9,29 @@ $(function () {
     fetchName(false, gender, language);
 });
 
+function refreshAvatar() {
+    localStorage.setItem('isAvatarLoading', true);
+    const gender = randomGender();
+    avatarLoader();
+    fetchAvatar(true, gender);
+}
+
+function refreshFirstName() {
+    localStorage.setItem('isNameLoading', true);
+    const gender = randomGender();
+    const language = randomLanguage();
+    firstNameLoader();
+    fetchFirstName(true, gender, language);
+}
+
+function refreshLastName() {
+    localStorage.setItem('isNameLoading', true);
+    const gender = randomGender();
+    const language = randomLanguage();
+    lastNameLoader();
+    fetchLastName(true, gender, language);
+}
+
 
 // This function has been written with the help of Ali https://github.com/ralia79
 async function fetchAvatar(alarm, gender) {
@@ -35,7 +58,6 @@ async function fetchName(alarm, gender, language) {
     const params = new URLSearchParams({gender, language});
     await fetch(window.location.origin + '/api/generate/name?' + params)
         .then(async res => {
-            console.log(res);
             if (res.status === 200) {
                 if (alarm) {
                     swal("Name Generated!", 'success');
@@ -43,6 +65,46 @@ async function fetchName(alarm, gender, language) {
                 await timer(500);
                 localStorage.setItem('isNameLoading', false);
                 await handleFetchNameResponse(res);
+            } else {
+                swal("Something's wrong with server!", 'error');
+            }
+        })
+        .catch(err => {
+            swal("Couldn't reach the server!", 'error');
+        });
+}
+
+async function fetchFirstName(alarm, gender, language) {
+    const params = new URLSearchParams({gender, language});
+    await fetch(window.location.origin + '/api/generate/name?' + params)
+        .then(async res => {
+            if (res.status === 200) {
+                if (alarm) {
+                    swal("Firstname Generated!", 'success');
+                }
+                await timer(500);
+                localStorage.setItem('isNameLoading', false);
+                await handleFetchFirstNameResponse(res);
+            } else {
+                swal("Something's wrong with server!", 'error');
+            }
+        })
+        .catch(err => {
+            swal("Couldn't reach the server!", 'error');
+        });
+}
+
+async function fetchLastName(alarm, gender, language) {
+    const params = new URLSearchParams({gender, language});
+    await fetch(window.location.origin + '/api/generate/name?' + params)
+        .then(async res => {
+            if (res.status === 200) {
+                if (alarm) {
+                    swal("Lastname Generated!", 'success');
+                }
+                await timer(500);
+                localStorage.setItem('isNameLoading', false);
+                await handleFetchLastNameResponse(res);
             } else {
                 swal("Something's wrong with server!", 'error');
             }
@@ -64,6 +126,16 @@ async function handleFetchAvatarResponse(data) {
 async function handleFetchNameResponse(data) {
     const json = await data.json();
     document.getElementById("firstname").value = json.first_name.name;
+    document.getElementById("lastname").value = json.last_name.name;
+}
+
+async function handleFetchFirstNameResponse(data) {
+    const json = await data.json();
+    document.getElementById("firstname").value = json.first_name.name;
+}
+
+async function handleFetchLastNameResponse(data) {
+    const json = await data.json();
     document.getElementById("lastname").value = json.last_name.name;
 }
 
