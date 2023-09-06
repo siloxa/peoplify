@@ -107,7 +107,7 @@
                 </div>
                 <div class="generate-input">
                     <div class="generate-input-1">
-                        <select class="shadow border generate-select">
+                        <select class="shadow border generate-select" id="genders">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                                 <g id="Tail icon">
                                 <path id="Vector" d="M10.5 10.9764L14.625 6.85141L15.8033 8.02974L10.5 13.3331L5.19666 8.02974L6.37499 6.85141L10.5 10.9764Z" fill="black"/>
@@ -118,7 +118,7 @@
                         </select>
                     </div>
                     <div class="generate-input-2">
-                        <select class="shadow border generate-select" >
+                        <select class="shadow border generate-select" id="languages">
                             <option selected disabled hidden>Language</option>
                             <option th:each="language: ${languages}" th:value="${language}" th:text="${language}"></option>
                         </select>

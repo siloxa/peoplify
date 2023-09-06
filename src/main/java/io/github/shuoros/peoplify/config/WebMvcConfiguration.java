@@ -13,6 +13,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     private GenderConverter genderConverter;
 
     @Autowired
+    private LanguageConverter languageConverter;
+
+    @Autowired
     private BodyColorConverter bodyColorConverter;
 
     @Autowired
@@ -33,6 +36,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(genderConverter);
+        registry.addConverter(languageConverter);
         registry.addConverter(bodyColorConverter);
         registry.addConverter(faceExpressionConverter);
         registry.addConverter(hairTypeConverter);

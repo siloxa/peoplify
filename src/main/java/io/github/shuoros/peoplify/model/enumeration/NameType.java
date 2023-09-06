@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum NameType {
 
-    @JsonProperty("first-name")
+    @JsonProperty("first_name")
     FIRST_NAME,
-    @JsonProperty("last-name")
+    @JsonProperty("last_name")
     LAST_NAME
 }
