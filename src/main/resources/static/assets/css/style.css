@@ -97,6 +97,28 @@ html{
 #header .header .header-right .right-right{
     margin-left: 25px;
 }
+#header .header .header-right .donate{
+    width: 125px;
+    height: 32px;
+    margin-left: 24px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    margin-top: -4px;
+}
+#header .header .header-right .donate a{
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.14px;
+}
 #header .header .header-right .right-right a{
     text-decoration: none;
     color: #757575;
@@ -294,6 +316,7 @@ html{
     height: 60px;
     margin-top: 24px;
     display: flex;
+    justify-content: space-between;
 }
 .generate-input .generate-input-1{
     width: 320px;
@@ -314,7 +337,7 @@ select:focus {
     height: 48px;
     margin-right: 32px;
 }
-.generate-input .generate-input-3{
+/* .generate-input .generate-input-3{
     display: flex;
     width: 320px;
     height: 48px;
@@ -383,7 +406,7 @@ select:focus {
   
   .slider.round:before {
     border-radius: 50%;
-  }  
+  }   */
 #generate .generate .generate-button{
     width: 100%;
     margin: auto;
@@ -528,7 +551,7 @@ select:focus {
 }
 #footer .footer .sections{
     display: flex;
-    margin-left: 60px;
+    margin-right: 56px;
 }
 #footer .footer .sections p a{
     margin-right: 16px;

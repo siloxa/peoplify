@@ -14,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;500&family=Rubik:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/reset.css">
 
@@ -28,8 +31,8 @@
                 </div>
                 <div class="header-right">
                     <h3 class="right-left"><a href="#developers">Developers</a></h3>
-                    <h3 class="right-right"><a href="#about">About us</a></h3>                        
-                    </div>
+                    <h3 class="right-right"><a href="#about">About us</a></h3>
+                    <button class="button shadow donate"><a href="">buy us a coffee</a></button>
                 </div>
             </div>
         </div>
@@ -123,14 +126,14 @@
                             <option th:each="language: ${languages}" th:value="${language}" th:text="${language}"></option>
                         </select>
                     </div>
-                    <div class="generate-input-3">
+                    <!-- <div class="generate-input-3">
                         <p>Face</p>
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round"></span>
                           </label>
                           <p>Full body</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="generate-button" >
                     <button onclick="generate();" class="shadow button animated-button">GENERATE</button>
