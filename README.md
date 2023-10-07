@@ -1,6 +1,6 @@
 <p align="center">
  <img src="https://github.com/siloxa/peoplify/assets/45015114/d06b1703-3b5e-4f05-8163-0bbcd53d271e" alt="peoplify" />
- <h2 align="center">🧑🏻🧑🏼🧑🏽🧑🏾🧑🏿</h2>
+ <p align="center">🧑🏻🧑🏼🧑🏽🧑🏾🧑🏿</p>
  <h1 align="center">Peoplify</h1>
  <p align="center">Is an easy-to-use API for generating random avatar and name</p>
 </p>
