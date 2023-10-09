@@ -285,7 +285,7 @@ html{
     width: 100%;
     height: 30px;
     position: relative;
-    margin-top: 40px;    
+    margin-top: 40px;
 }
 #generate .generate-text hr{
     background-color: #ededed;
@@ -325,7 +325,7 @@ html{
 }
 
 select:focus {
-    border: 3px solid #5E3AF1 
+    border: 3px solid #5E3AF1
 }
 .generate-input .generate-input-1 select svg{
     top: 50%;
@@ -375,7 +375,7 @@ select:focus {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }  
+  }
   .slider:before {
     position: absolute;
     content: "";
@@ -389,21 +389,21 @@ select:focus {
   }
   input + .slider {
     background: linear-gradient(90deg, #5E3AF1 1.14%, #947AFF 73.86%);  }
-  
+
   input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(20px);
     transform: translateX(20px);
   }
-  
+
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;
   }   */
@@ -438,7 +438,7 @@ select:focus {
     margin: auto;
     text-align: center;
     padding: 48px 0;
-    
+
 }
 #developers .developers .developers-title{
     color: #000;
@@ -470,7 +470,7 @@ select:focus {
     font-style: normal;
     font-weight: 600;
     line-height: 32px; /* 133.333% */
-    letter-spacing: -0.384px;   
+    letter-spacing: -0.384px;
     margin-top: 48px;
     margin-bottom: 32px;
 
@@ -499,7 +499,6 @@ select:focus {
 }
 #about .about .about-text{
     width: 100%;
-    height: 130px;
     text-align: center;
 }
 #about .about .about-text h1{
@@ -528,9 +527,8 @@ select:focus {
 }
 #about .about .about-image{
     width: 100%;
-    height: 367px;
     text-align: center;
-    padding: 48px 0;
+    margin: 48px 0;
     border-radius: 12px;
 }
 #about .about .about-image img{
@@ -540,7 +538,7 @@ select:focus {
 }
 #footer{
     width: 100%;
-    height: 96px;
+    margin: 48px 0;
 }
 #footer .footer{
     display: flex;
@@ -595,12 +593,15 @@ select:focus {
     letter-spacing: -0.16px;
     padding: 24px 121px;
 }
-#copy .copy-text{
+#api .container {
+    width: 796px;
+}
+#api .api-text{
     display: flex;
     justify-content: center;
     margin: 48px 0;
 }
-#copy .copy-text p{
+#api .api-text p{
     color: #000;
     text-align: center;
     font-family: Rubik;
@@ -610,12 +611,12 @@ select:focus {
     line-height: 26px;
     letter-spacing: -0.216px;
 }
-#copy .copy-form{
+#api .api-form{
     width: 793px;
     height: 116px;
     margin: auto;
 }
-#copy .copy-form form label{
+#api .api-form form label{
     display: block;
     color: #000;
     font-family: Rubik;
@@ -625,7 +626,7 @@ select:focus {
     line-height: 24px; /* 150% */
     letter-spacing: -0.16px;
 }
-#copy .copy-form form input{
+#api .copy-form form input{
     background-color: #000;
     width: 769px;
     height: 40px;
