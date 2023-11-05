@@ -637,10 +637,10 @@ select:focus {
     -o-border-radius: 12px;
     padding: 24px 12px;
 }
-#table .table{
+/* #table .table-div{
     margin-bottom: 48px;
 }
-#table .table table{
+#table .table{
     width: 793px;
     height: 980px;
     margin: auto;
@@ -655,12 +655,12 @@ select:focus {
     font-weight: 400;
     line-height: 20px;
 }
-#table .table table tr{
+#table .table  tr{
     border: 1px solid #ededed;
     text-align: center;
     
 }
-#table .table table th{
+#table .table th{
     height: 44px;
     color: #000;
     color: #000;
@@ -670,10 +670,49 @@ select:focus {
     font-weight: 500;
     line-height: 18px;
 }
-#table .table table td{
+#table .table td{
     height: 72px;
 }
-#table .table table tr:nth-child(even){
+#table .table tr:nth-child(even){
     border-bottom: 1px solid #EDEDED;
     background: #F9F9F9;
+} */
+#table{
+    margin: 48px 0;
 }
+#table .table-div{
+    padding: 24px;
+    width: 793px;
+    height: 980px;
+    margin: auto;
+}
+#table .table {
+    border-collapse: collapse;
+    border: 1px solid #ededed;
+    font-family: Rubik;
+    
+}
+#table .table thead th{
+    font-weight: bold;
+    padding: 24px;
+    height: 20px;
+    background-color: #FFF;
+    color: #000;
+}
+#table .table tbody td{
+    padding: 12px;
+    height: 40px;
+    color: #757575;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+#table .table tr{
+    border-bottom: 1px solid #EDEDED;
+}
+#table .table tr:nth-child(odd){
+    background: #F9F9F9;
+} 
