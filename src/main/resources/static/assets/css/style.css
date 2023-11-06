@@ -611,86 +611,59 @@ select:focus {
     line-height: 26px;
     letter-spacing: -0.216px;
 }
-#api .api-form{
-    width: 793px;
-    height: 116px;
-    margin: auto;
-}
-#api .api-form form label{
-    display: block;
+#api .api-box p{
     color: #000;
     font-family: Rubik;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
     letter-spacing: -0.16px;
 }
-#api .copy-form form input{
-    background-color: #000;
+#api .api-box .black-box{
     width: 769px;
     height: 40px;
+    padding: 24px 12px;
+    background-color: #000;
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     -ms-border-radius: 12px;
     -o-border-radius: 12px;
-    padding: 24px 12px;
 }
-/* #table .table-div{
-    margin-bottom: 48px;
-}
-#table .table{
-    width: 793px;
-    height: 980px;
-    margin: auto;
-    padding: 24px;
-    border-radius: 12px;
-    border: 1px solid #EDEDED;
-    background: #FFF;
-    color: #757575;
-    font-family: Rubik;
+#api .api-box .black-box p{
+    color: #FFF;
+    font-family: Fira Code;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
+    text-transform: lowercase;
 }
-#table .table  tr{
-    border: 1px solid #ededed;
-    text-align: center;
-    
-}
-#table .table th{
-    height: 44px;
-    color: #000;
-    color: #000;
-    font-family: Rubik;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 18px;
-}
-#table .table td{
-    height: 72px;
-}
-#table .table tr:nth-child(even){
-    border-bottom: 1px solid #EDEDED;
-    background: #F9F9F9;
-} */
 #table{
     margin: 48px 0;
 }
 #table .table-div{
-    padding: 24px;
     width: 793px;
-    height: 980px;
+    height: 920px;
     margin: auto;
+    border: 1px solid #ededed;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 72px;
 }
 #table .table {
-    border-collapse: collapse;
-    border: 1px solid #ededed;
+    border-collapse: separate;
     font-family: Rubik;
-    
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
 }
 #table .table thead th{
     font-weight: bold;
@@ -698,6 +671,11 @@ select:focus {
     height: 20px;
     background-color: #FFF;
     color: #000;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
 }
 #table .table tbody td{
     padding: 12px;
