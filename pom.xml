@@ -8,16 +8,60 @@
 		<version>3.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.github.shuoros</groupId>
+	<groupId>tech.siloxa.peoplify</groupId>
 	<artifactId>peoplify</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>peoplify</name>
-	<description>Demo project for Spring Boot</description>
+	<version>1.0.0</version>
+	<name>Peoplify</name>
+	<description>Peoplify is a random avatar and name generator</description>
+	<url>https://github.com/siloxa/peoplify</url>
+	<inceptionYear>2023</inceptionYear>
+
+	<developers>
+		<developer>
+			<name>Soroush Shemshadi</name>
+			<email>shuoros@yahoo.com</email>
+			<roles>
+				<role>Back-End Developer</role>
+			</roles>
+			<url>https://shuoros.github.io</url>
+		</developer>
+		<developer>
+			<name>Shayan Mahjoub</name>
+			<email>shaynmah@gmail.con</email>
+			<roles>
+				<role>Front-End Developer</role>
+			</roles>
+			<url>https://github.com/shynmah</url>
+		</developer>
+		<developer>
+			<name>Sarah Rajabi Moghadam</name>
+			<email>imsarahrajabi@gmail.com</email>
+			<roles>
+				<role>Designer</role>
+			</roles>
+			<url>https://www.linkedin.com/in/sarahrajabi</url>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/siloxa/peoplify/blob/main/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/siloxa/peoplify/issues</url>
+	</issueManagement>
+
 	<properties>
 		<java.version>17</java.version>
 		<spring-boot-starter-thymeleaf.version>3.1.3</spring-boot-starter-thymeleaf.version>
 		<opencsv.version>5.7.0</opencsv.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
