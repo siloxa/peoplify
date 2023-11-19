@@ -1,0 +1,701 @@
+html{
+    scroll-behavior: smooth;
+}
+.colored-toast.swal2-icon-success {
+  background-color: white !important;
+  font-family: Rubik !important;
+}
+.colored-toast.swal2-icon-error {
+  background-color: white !important;
+  font-family: Rubik !important;
+}
+#header{
+    width: 100%;
+    height: 64px;
+    background: #755BDF1A;
+}
+.container{
+    width: 1200px;
+    margin: auto;
+}
+.shadow{
+    box-shadow: 0px -1px 0px 0px #2F2B431A inset;
+    box-shadow: 0px 1px 3px 0px #2F2B431A;
+}
+.button{
+    background: linear-gradient(90deg, #5E3AF1 0%, #947AFF 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer; 
+}
+.border{
+    border-radius: 12px;
+    border: 1px solid  #EDEDED;
+}
+.border-32{
+    border-radius: 32px;
+    border: 1px solid  #EDEDED;
+}
+.peoplify-side-icon{
+    margin-left: 8px;
+    margin-top: 4px;
+    color: #000;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.48px;
+}
+.generate-select{
+    width: 320px;
+    height: 48px;
+    margin-top: 8px;
+    margin-right: 32px;
+    font-family: Rubik;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    padding-left: 8px;
+    appearance: none;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><g id="Tail icon"><path id="Vector" d="M10.5 10.9764L14.625 6.85141L15.8033 8.02974L10.5 13.3331L5.19666 8.02974L6.37499 6.85141L10.5 10.9764Z" fill="black"/></g></svg>');
+    background-repeat: no-repeat;
+    background-position: 287px 14px;
+    outline: none;
+}
+.animated-button {
+  border: 0;
+  outline: 0;
+  transition: all 0.3s;
+}
+.animated-button:hover {
+  box-shadow: 0px 5px 12px -5px #5E3AF1;
+  transform: scale(1.03);
+}
+.animated-button:active {
+  box-shadow: 0px 4px 8px #5E3AF1;
+  transform: scale(0.98);
+}
+#header .header{
+    display: flex;
+    justify-content: space-between;
+}
+#header .header .header-right{
+    display: flex;
+    margin-top: 20px;
+    font-size: 17px;
+    font-family: Rubik;
+    font-weight: 500;
+}
+#header .header .header-right .right-right{
+    margin-left: 25px;
+}
+#header .header .header-right .donate{
+    width: 125px;
+    height: 32px;
+    margin-left: 24px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    margin-top: -4px;
+}
+#header .header .header-right .donate a{
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.14px;
+}
+#header .header .header-right .right-right a{
+    text-decoration: none;
+    color: #757575;
+    color: #757575;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+}
+#header .header .header-right .right-left a{
+    text-decoration: none;
+    color: #757575;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+}
+#header .header .header-left{
+    margin-top: 16px;
+    display: flex;
+}
+#display .display{
+    position: relative;
+}
+#display .display .display-text h1{
+    font-size: 64px;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-family: Rubik;
+}
+#display .display .display-image{
+    text-align: center;
+    margin-bottom: 24px;
+}
+#display .display .display-image img{
+    border-radius: 12px;
+    width: 224px;
+}
+#display .display .display-button{
+    position: relative;
+    width: 224px;
+    margin: auto;
+    height: 48px;
+}
+#display .display .display-button .button-refresh {
+    position: relative;
+}
+#display .display .display-button .button-refresh button{
+    position: absolute;
+    height: 48px;
+    width: 56px;
+    Padding: 12px 16px 12px 16px ;
+    left: 18%;
+}
+#display .display .display-button .button-download{
+    position: relative;
+}
+#display .display .display-button .button-download button{
+    height: 48px;
+    width: 56px;
+    Padding: 12px 16px 12px 16px ;
+    position: absolute;
+    left : 56.25%;
+}
+#form .form{
+    display: flex;
+    width: 808px;
+    margin: auto;
+    margin-top: 24px;
+    justify-content: space-between;
+}
+#form .form .form-left{
+    display: flex;
+    position: relative;
+}
+#form .form .form-left .copy-button{
+    position: absolute;
+    left: 65%;
+    top: 41%;
+    padding: 14px 15px;
+    border-left: 1px solid #EDEDED;
+    cursor: pointer;
+}
+#form .form .form-left form label{
+    font-family: Rubik;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+.name-input{
+    width: 304px;
+    height: 48px;
+    padding-left: 16px;
+    margin-top: 8px;
+    background-color: white;
+}
+#form .form .form-left form input::placeholder{
+    color: #000;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    padding-left: 8px;
+}
+#form .form .form-left button{
+    height: 48px;
+    width: 56px;
+    Padding: 12px 16px 12px 16px ;
+    margin-top: 16px;
+    margin-top: 34px;
+    margin-left: 16px;
+    margin-right: 24px;
+}
+#form .form .form-right{
+    display: flex;
+    position: relative;
+}
+#form .form .form-right .copy-button{
+    position: absolute;
+    left: 69%;
+    top: 41%;
+    padding: 14px 15px;
+    border-left: 1px solid #EDEDED;
+    cursor: pointer;
+}
+
+#form .form .form-right form label{
+    font-family: Rubik;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+#form .form .form-right form input::placeholder{
+    color: #000;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    padding-left: 8px;
+}
+#form .form .form-right button{
+    height: 48px;
+    width: 56px;
+    Padding: 12px 16px 12px 16px;
+    margin-top: 34px;
+    margin-left: 16px;
+}
+#generate .generate-text{
+    width: 100%;
+    height: 30px;
+    position: relative;
+    margin-top: 40px;
+}
+#generate .generate-text hr{
+    background-color: #ededed;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10%;
+    height: 1px;
+    border: none;
+}
+#generate .generate-text .generate-text-h1{
+    height: 27px;
+    background-color: white;
+    position: absolute;
+    left: 19.3%;
+}
+#generate .generate-text .generate-text-h1 h1{
+    color: #000;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+}
+.generate-input{
+    width: 880px;
+    margin: auto;
+    height: 60px;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+}
+.generate-input .generate-input-1{
+    width: 320px;
+    height: 48px;
+    margin-right: 32px;
+}
+
+select:focus {
+    border: 3px solid #5E3AF1
+}
+.generate-input .generate-input-1 select svg{
+    top: 50%;
+    left: 50%;
+    background-color: #000;
+}
+.generate-input .generate-input-2{
+    width: 320px;
+    height: 48px;
+    margin-right: 32px;
+}
+/* .generate-input .generate-input-3{
+    display: flex;
+    width: 320px;
+    height: 48px;
+}
+.generate-input .generate-input-3 p{
+    color: #000;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 14px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    padding: 2px;
+    margin: auto;
+    margin-top: 14px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input + .slider {
+    background: linear-gradient(90deg, #5E3AF1 1.14%, #947AFF 73.86%);  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }   */
+#generate .generate .generate-button{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+#generate .generate .generate-button button{
+    width: 320px;
+    height: 48px;
+    padding: 12px 16px;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+#developers .developers{
+    width: 100%;
+    height: 462px;
+    margin-top: 48px;
+    align-items: center;
+    background: rgba(117, 91, 223, 0.10);
+}
+#developers .developers .developers-title{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 48px 0;
+
+}
+#developers .developers .developers-title{
+    color: #000;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 54px;
+    letter-spacing: -0.8px;
+}
+#developers .developers .developers-member{
+    display: flex;
+    text-align: center;
+}
+#developers .developers .developers-member a{
+    text-decoration: none;
+}
+#developers .developers .developers-member div{
+    width: 384px;
+    height: 264px;
+    background-color:  #FFF;
+    position: relative;
+}
+#developers .developers .developers-member h1{
+    color: #000;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: -0.384px;
+    margin-top: 48px;
+    margin-bottom: 32px;
+
+}
+#developers .developers .developers-member p{
+    color: #000;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+}
+#developers .developers .developers-member .developers-member-center{
+    margin: 0 24px;
+}
+#developers .developers .developers-member div .developers-social{
+    margin-top: 32px;
+    width: 100%;
+    height: 48px;
+}
+#developers .developers .developers-member div .developers-social svg{
+    width: 32px;
+    margin: 8px;
+    cursor: pointer;
+}
+#about .about .about-text{
+    width: 100%;
+    text-align: center;
+}
+#about .about .about-text h1{
+    color: #000;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 54px;
+    letter-spacing: -0.72px;
+    margin-top: 48px;
+    margin-bottom: 24px;
+}
+#about .about .about-text p{
+    text-align: center;
+    font-family: Rubik;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 144.444% */
+    letter-spacing: -0.216px;
+}
+#about .about .about-text p a{
+    color: #000;
+}
+#about .about .about-image{
+    width: 100%;
+    text-align: center;
+    margin: 48px 0;
+    border-radius: 12px;
+}
+#about .about .about-image img{
+    width: 996px;
+    height: 373.87px;
+    border-radius: 12px;
+}
+#footer{
+    width: 100%;
+    margin: 48px 0;
+}
+#footer .footer{
+    display: flex;
+    justify-content: space-between;
+}
+#footer .icons{
+    display: flex;
+}
+#footer .footer .sections{
+    display: flex;
+    margin-right: 36px;
+}
+#footer .footer .sections p a{
+    margin-right: 16px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+    cursor: pointer;
+
+}
+#footer .footer .social{
+    display: flex;
+}
+#footer .footer .social svg{
+    width: 24px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+#copyright .copyright{
+    width: 100%;
+    height: 72px;
+    background: rgba(117, 91, 223, 0.10);
+}
+#copyright .copyright a {
+    color: #757575;
+}
+#copyright .copyright p{
+    margin: auto;
+    color: #757575;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+    padding: 24px 121px;
+}
+.api .container {
+    width: 796px;
+}
+.api .api-text{
+    display: flex;
+    justify-content: center;
+    margin: 48px 0;
+}
+.api .api-text p{
+    color: #000;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.216px;
+}
+.api .api-header{
+    text-align: center;
+    color: #000;
+    font-family: Rubik;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    margin: 52px 0px;
+}
+.api .api-box p{
+    color: #000;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+}
+.api .api-box .black-box{
+    width: 769px;
+    padding: 24px 12px;
+    background-color: #000;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+.api .api-box .black-box p{
+    color: #FFF;
+    font-family: Fira Code;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: lowercase;
+}
+.table .table-div{
+    width: 793px;
+    margin: auto;
+    border: 1px solid #ededed;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 72px;
+}
+.table .table {
+    border-collapse: separate;
+    font-family: Rubik;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+.table .table thead th{
+    font-weight: bold;
+    padding: 24px;
+    height: 20px;
+    background-color: #FFF;
+    color: #000;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+.table .table tbody td{
+    padding: 12px;
+    height: 40px;
+    color: #757575;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+.table .table tr{
+    border-bottom: 1px solid #EDEDED;
+}
+.table .table tr:nth-child(odd){
+    background: #F9F9F9;
+} 

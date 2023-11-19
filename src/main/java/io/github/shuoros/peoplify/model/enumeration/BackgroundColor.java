@@ -3,20 +3,21 @@ package io.github.shuoros.peoplify.model.enumeration;
 import java.awt.*;
 
 public enum BackgroundColor {
-    RED(new Color(190, 30, 45)),
-    BLUE(new Color(28, 117, 188)),
-    GREEN(new Color(120, 193, 67)),
-    YELLOW(new Color(231, 209, 35)),
-    ORANGE(new Color(245, 119, 31)),
-    PURPLE(new Color(127, 63, 152)),
-    PINK(new Color(255, 17, 125)),
-    BROWN(new Color(117, 76, 41)),
-    INDIGO(new Color(38, 34, 98)),
-    GRAY(new Color(115, 115, 115)),
-    LAVENDER(new Color(199, 153, 198)),
-    CYAN(new Color(111, 204, 221)),
-    BLACK(new Color(0, 0, 0)),
-    WHITE(new Color(255, 255, 255));
+
+    CYAN(new Color(191, 241, 255)),
+    LAVENDER(new Color(216, 201, 255)),
+    YELLOW(new Color(249, 255, 180)),
+    PINK(new Color(255, 169, 176)),
+    BROWN(new Color(199, 178, 153)),
+    GREEN(new Color(180, 255, 216)),
+    LIGHT_YELLOW(new Color(255, 255, 226)),
+    ORANGE(new Color(255, 191, 144)),
+    BLUE(new Color(148, 184, 255)),
+    AQUAMARINE(new Color(180, 255, 241)),
+    PURPLE(new Color(180, 159, 241)),
+    SALMON(new Color(255, 148, 138)),
+    BLUE_GREEN(new Color(71, 181, 148)),
+    MINT_GREEN(new Color(191, 255, 203));
 
     private Color color;
 
