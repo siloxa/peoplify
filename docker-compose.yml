@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  peoplify:
+    build:
+      context: .
+      args:
+        JAR_FILE: "./target/*.jar"
+    image: peoplify-app
+    ports:
+      - "8585:8585"
+      
