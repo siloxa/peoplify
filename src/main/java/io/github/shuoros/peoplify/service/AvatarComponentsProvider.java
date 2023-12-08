@@ -7,8 +7,10 @@ import org.springframework.util.ResourceUtils;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class AvatarComponentsProvider {
 
@@ -156,7 +158,8 @@ public class AvatarComponentsProvider {
 
     private static BufferedImage loadImage(String name) {
         try {
-            return ImageIO.read(ResourceUtils.getFile("classpath:static/components/" + name + ".png"));
+            final InputStream inputStream = Objects.requireNonNull(AvatarComponentsProvider.class.getClassLoader().getResourceAsStream("static/components/" + name + ".png"));
+            return ImageIO.read(inputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
