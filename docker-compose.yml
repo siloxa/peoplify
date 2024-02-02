@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  peoplify:
+    build:
+      context: .
+      args:
+        JAR_FILE: "./target/*.jar"
+    image: peoplify-app
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+    ports:
+      - "127.0.0.1:8585:8585"
+      

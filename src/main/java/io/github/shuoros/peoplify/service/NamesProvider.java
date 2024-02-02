@@ -7,11 +7,10 @@ import io.github.shuoros.peoplify.model.Name;
 import io.github.shuoros.peoplify.model.enumeration.Gender;
 import io.github.shuoros.peoplify.model.enumeration.Language;
 import io.github.shuoros.peoplify.model.enumeration.NameType;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.ResourceUtils;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +24,8 @@ public class NamesProvider {
 
     static {
         try (
-                final Reader reader = new FileReader(ResourceUtils.getFile("classpath:static/names.csv"));
+                final InputStream inputStream = new ClassPathResource("static/names.csv").getInputStream();
+                final Reader reader = new InputStreamReader(inputStream);
                 final CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build()
         ) {
             final List<Name> rawNames = parseCSV(csvReader);

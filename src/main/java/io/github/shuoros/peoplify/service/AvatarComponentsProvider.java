@@ -2,11 +2,12 @@ package io.github.shuoros.peoplify.service;
 
 import io.github.shuoros.peoplify.model.*;
 import io.github.shuoros.peoplify.model.enumeration.*;
-import org.springframework.util.ResourceUtils;
+import org.springframework.core.io.ClassPathResource;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -133,7 +134,7 @@ public class AvatarComponentsProvider {
                                 AccessoryColor.RED, loadImage(name + "-red"),
                                 AccessoryColor.WHITE, loadImage(name + "-white"),
                                 AccessoryColor.YELLOW, loadImage(name + "-yellow")
-                                )
+                        )
                 )
                 .x(x)
                 .y(y)
@@ -156,7 +157,8 @@ public class AvatarComponentsProvider {
 
     private static BufferedImage loadImage(String name) {
         try {
-            return ImageIO.read(ResourceUtils.getFile("classpath:static/components/" + name + ".png"));
+            final InputStream inputStream = new ClassPathResource("static/components/" + name + ".png").getInputStream();
+            return ImageIO.read(inputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
