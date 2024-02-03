@@ -3,19 +3,15 @@ package io.github.shuoros.peoplify.model;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
-public class OtherComponent extends AbstractComponent {
-
-    private Integer x;
-
-    private Integer y;
+public class HeadComponent extends AbstractMainComponent {
 
     @Override
     public Integer getX() {
-        return x;
+        return 143;
     }
 
     @Override
     public Integer getY() {
-        return y;
+        return 115;
     }
 }

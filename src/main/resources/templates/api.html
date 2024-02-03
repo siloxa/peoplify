@@ -11,6 +11,23 @@
     <link rel="manifest" href="assets/image/site.webmanifest">
     <link rel="mask-icon" href="assets/image/safari-pinned-tab.svg" color="#5bbad5">
     <title>Peoplify | API Documentation</title>
+    <meta name="description" content="Peoplify is a service for concise, consistent, and legible random avatars and names, which can easily be used in any project of yours as a default user profile or firstname and last name."/>
+    <link rel="canonical" href="https://peoplify.pics/api" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Peoplify | API Documentation" />
+    <meta property="og:description" content="Peoplify is a random avatar and name generator, which is free to use and open-source with over than 12 billion unique avatars. You can use any generated avatar for free as your profile picture, gaming logo, as a part of your design project, and so on.">
+    <meta property="og:url" content="https://peoplify.pics/api" />
+    <meta property="og:site_name" content="Peoplify" />
+    <meta property="og:image" content="https://peoplify.pics/assets/image/about-us.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Peoplify | API Documentation" />
+    <meta name="twitter:description" content="Peoplify is a random avatar and name generator, which is free to use and open-source with over than 12 billion unique avatars. You can use any generated avatar for free as your profile picture, gaming logo, as a part of your design project, and so on.">
+    <meta name="twitter:image:src" content="https://peoplify.pics/assets/image/about-us.png">
+    <meta name="twitter:creator" content="@shuoros">
+    <meta name="twitter:domain" content="https://peoplify.pics/api">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,10 +42,10 @@
     <header id="header">
         <div class="container">
             <div class="header">
-                <div class="header-left">
+                <a class="header-left" href="/">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="4" fill="url(#pattern0)"/><defs><pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_163_245" transform="scale(0.00833333)"/></pattern><image id="image0_163_245" width="120" height="120" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFFSURBVHgB7dMxEcJQFADBB4M9KkzgCHro0ECBAdykTnzc37Vwc6ft/9pnIdfbfVZyHtIEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM4TuA4geMEjhM47vJ+PmYl389vVuLgOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI4TOE7gOIHjBI47AMq5CVsQork+AAAAAElFTkSuQmCC"/></defs></svg>
                     <div class="peoplify-side-icon">Peoplify</div>
-                </div>
+                </a>
                 <div class="header-right">
                     <h3 class="right-left"><a href="/#developers">Developers</a></h3>
                     <h3 class="right-right"><a href="/#about">About us</a></h3>
@@ -49,7 +66,7 @@
             <div class="api-box">
                 <p>Sample API request</p>
                 <div class="black-box">
-                    <p>https://peoplify.siloxa.tech/api/generate/avatar</p>
+                    <p>https://peoplify.pics/api/generate/avatar</p>
                 </div>
             </div>
             <div class="api-text">
@@ -69,55 +86,59 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Size</td>
+                            <td>size</td>
                             <td>Integer</td>
                         </tr>
                         <tr>
-                            <td>Gender</td>
+                            <td>avatarType</td>
+                            <td>Body, Head</td>
+                        </tr>
+                        <tr>
+                            <td>gender</td>
                             <td>Male, Female</td>
                         </tr>
                         <tr>
-                            <td>BodyColor</td>
+                            <td>bodyColor</td>
                             <td>Yellow, Black, Brown, White, Pink, Nude</td>
                         </tr>
                         <tr>
-                            <td>FaceType</td>
+                            <td>faceType</td>
                             <td>NORMAL, FRECKLES</td>
                         </tr>
                         <tr>
-                            <td>HairType</td>
+                            <td>hairType</td>
                             <td>SEMI_BALD(Gender.MALE), LONG_AFRO(Gender.FEMALE), SHORT_AFRO(Gender.MALE), PONY_TAIL(Gender.FEMALE), CENTER_PART(Gender.MALE), SIDE_PART(Gender.MALE), CORNROWS(Gender.MALE), BALD(Gender.MALE)</td>
                         </tr>
                         <tr>
-                            <td>HairColor</td>
+                            <td>hairColor</td>
                             <td>BLACK, BLONDE, BLUE, BROWN, ORANGE, PINK, WHITE</td>
                         </tr>
                         <tr>
-                            <td>BeardType</td>
+                            <td>beardType</td>
                             <td>GOAT_PATCH, GOATEE, FORK, CHIN_TRAP, GARIBALDI, NED_KELLY</td>
                         </tr>
                         <tr>
-                            <td>BeardColor</td>
+                            <td>beardColor</td>
                             <td>BLACK, BLONDE, BLUE, BROWN, ORANGE, PINK, WHITE</td>
                         </tr>
                         <tr>
-                            <td>MustacheType</td>
+                            <td>mustacheType</td>
                             <td>CHEVRON, WALRUS, HANDLEBAR, POIROT</td>
                         </tr>
                         <tr>
-                            <td>MustacheColor</td>
+                            <td>mustacheColor</td>
                             <td>BLACK, BLONDE, BLUE, BROWN, ORANGE, PINK, WHITE</td>
                         </tr>
                         <tr>
-                            <td>ClothColor</td>
+                            <td>clothColor</td>
                             <td>BLACK, BLUE, GRAY, GREEN, ORANGE, PINK, PURPLE, RED, WHITE, YELLOW</td>
                         </tr>
                         <tr>
-                            <td>GlassesType</td>
+                            <td>glassesType</td>
                             <td>ROUND, CAT_EYE</td>
                         </tr>
                         <tr>
-                            <td>GlassesColor</td>
+                            <td>glassesColor</td>
                             <td>BLACK, BLUE, GRAY, GREEN, ORANGE, PINK, PURPLE, RED, WHITE, YELLOW</td>
                         </tr>    
                     </tbody>
@@ -133,7 +154,7 @@
             <div class="api-box">
                 <p>Sample API request</p>
                 <div class="black-box">
-                    <p>https://peoplify.siloxa.tech/api/generate/name</p>
+                    <p>https://peoplify.pics/api/generate/name</p>
                 </div>
             </div>
             <div class="api-text">
@@ -153,11 +174,11 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Gender</td>
+                        <td>gender</td>
                         <td>Male, Female</td>
                     </tr>
                     <tr>
-                        <td>Language</td>
+                        <td>language</td>
                         <td>English, Persian</td>
                     </tr>
                     </tbody>
@@ -195,7 +216,7 @@
     </section>
     <section id="copyright">
         <div class="copyright">
-            <p>Peoplify v1.0.0 <a href="https://github.com/siloxa/peoplify/blob/main/LICENSE" target="_blank">MIT Licence</a>. © 2023</p>
+            <p>Peoplify v1.1.0 <a href="https://github.com/siloxa/peoplify/blob/main/LICENSE" target="_blank">MIT Licence</a>. © 2023</p>
         </div>
     </section>
 </body>

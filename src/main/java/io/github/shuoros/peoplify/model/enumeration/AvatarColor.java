@@ -1,6 +1,6 @@
 package io.github.shuoros.peoplify.model.enumeration;
 
-public enum BodyColor {
+public enum AvatarColor {
 
     YELLOW,
     BLACK,

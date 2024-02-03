@@ -3,15 +3,19 @@ package io.github.shuoros.peoplify.model;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
-public class FaceComponent extends AbstractTypeBasedComponent {
+public class CustomizableComponent extends AbstractTypeBasedComponent {
+
+    private Integer x;
+
+    private Integer y;
 
     @Override
     public Integer getX() {
-        return 226;
+        return x;
     }
 
     @Override
     public Integer getY() {
-        return calculateYPosition(185);
+        return calculateYPosition(y);
     }
 }

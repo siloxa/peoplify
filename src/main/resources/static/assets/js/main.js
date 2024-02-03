@@ -1,19 +1,21 @@
 $(function () {
     localStorage.setItem('isAvatarLoading', true);
     localStorage.setItem('isNameLoading', true);
+    const type = document.getElementById("type").checked ? 'HEAD' : 'BODY';
     const gender = randomGender();
     const language = randomLanguage();
     avatarLoader();
     nameLoader();
-    fetchAvatar(false, gender);
+    fetchAvatar(false, gender, type);
     fetchName(false, gender, language);
 });
 
 function refreshAvatar() {
     localStorage.setItem('isAvatarLoading', true);
+    const type = document.getElementById("type").checked ? 'HEAD' : 'BODY';
     const gender = randomGender();
     avatarLoader();
-    fetchAvatar(true, gender);
+    fetchAvatar(true, gender, type);
 }
 
 function refreshFirstName() {
@@ -37,6 +39,7 @@ function generate() {
     localStorage.setItem('isNameLoading', true);
     const gendersElement = document.getElementById("genders");
     const languagesElement = document.getElementById("languages");
+    const type = document.getElementById("type").checked ? 'HEAD' : 'BODY';
     let gender = gendersElement.options[gendersElement.selectedIndex].text;
     let language = languagesElement.options[languagesElement.selectedIndex].text;
     if (gender === 'Gender') {
@@ -47,14 +50,13 @@ function generate() {
     }
     avatarLoader();
     nameLoader();
-    fetchAvatar(true, gender);
+    fetchAvatar(true, gender, type);
     fetchName(false, gender, language);
 }
 
-
 // This function has been written with the help of Ali https://github.com/ralia79
-async function fetchAvatar(alarm, gender) {
-    const params = new URLSearchParams({ gender });
+async function fetchAvatar(alarm, gender, avatarType) {
+    const params = new URLSearchParams({ gender, avatarType });
     await fetch(window.location.origin + '/api/generate/avatar?' + params)
         .then(async res => {
             if (res.status === 200) {

@@ -145,6 +145,7 @@ html{
 #header .header .header-left{
     margin-top: 16px;
     display: flex;
+    text-decoration: none;
 }
 #display .display{
     position: relative;
@@ -337,7 +338,7 @@ select:focus {
     height: 48px;
     margin-right: 32px;
 }
-/* .generate-input .generate-input-3{
+.generate-input .generate-input-3{
     display: flex;
     width: 320px;
     height: 48px;
@@ -359,13 +360,13 @@ select:focus {
     padding: 2px;
     margin: auto;
     margin-top: 14px;
-  }
-  .switch input {
+}
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  .slider {
+}
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -375,8 +376,8 @@ select:focus {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  .slider:before {
+}
+.slider:before {
     position: absolute;
     content: "";
     height: 20px;
@@ -386,27 +387,24 @@ select:focus {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  input + .slider {
-    background: linear-gradient(90deg, #5E3AF1 1.14%, #947AFF 73.86%);  }
-
-  input:focus + .slider {
+}
+input + .slider {
+    background: linear-gradient(90deg, #5E3AF1 1.14%, #947AFF 73.86%);
+}
+input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
-  }
-
-  input:checked + .slider:before {
+}
+input:checked + .slider:before {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(20px);
     transform: translateX(20px);
-  }
-
-  .slider.round {
+}
+.slider.round {
     border-radius: 34px;
-  }
-
-  .slider.round:before {
+}
+.slider.round:before {
     border-radius: 50%;
-  }   */
+}
 #generate .generate .generate-button{
     width: 100%;
     margin: auto;
