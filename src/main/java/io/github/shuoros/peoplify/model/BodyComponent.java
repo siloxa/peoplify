@@ -3,7 +3,7 @@ package io.github.shuoros.peoplify.model;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
-public class BodyComponent extends AbstractComponent {
+public class BodyComponent extends AbstractMainComponent {
 
     @Override
     public Integer getX() {

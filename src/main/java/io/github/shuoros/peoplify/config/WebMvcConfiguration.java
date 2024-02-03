@@ -10,6 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Autowired
+    private AvatarTypeConverter avatarTypeConverter;
+
+    @Autowired
     private GenderConverter genderConverter;
 
     @Autowired
@@ -35,6 +38,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(avatarTypeConverter);
         registry.addConverter(genderConverter);
         registry.addConverter(languageConverter);
         registry.addConverter(bodyColorConverter);

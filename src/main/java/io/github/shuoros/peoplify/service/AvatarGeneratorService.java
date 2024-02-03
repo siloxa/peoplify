@@ -27,9 +27,11 @@ public class AvatarGeneratorService {
         final BufferedImage canvas = setUpCanvas();
         final Graphics2D graphics = (Graphics2D) canvas.getGraphics();
 
-        renderBody(graphics, avatarRequest);
+        renderAvatar(graphics, avatarRequest);
 
-        renderCloth(graphics, avatarRequest);
+        if (avatarRequest.getAvatarType() == AvatarType.BODY) {
+            renderCloth(graphics, avatarRequest);
+        }
 
         renderFace(graphics, avatarRequest);
 
@@ -37,7 +39,8 @@ public class AvatarGeneratorService {
 
         writeToOutputStream(
                 selectCanvasSize(avatarRequest, canvas),
-                outputStream);
+                outputStream
+        );
     }
 
     private BufferedImage setUpCanvas() {
@@ -70,33 +73,48 @@ public class AvatarGeneratorService {
         return newCanvas;
     }
 
-    private void renderBody(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+    private void renderAvatar(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        switch (avatarRequest.getAvatarType()) {
+            case BODY -> renderBody(graphics, avatarRequest);
+            case HEAD -> renderHead(graphics, avatarRequest);
+        }
+    }
+
+    private void renderBody(Graphics2D graphics, AvatarRequest avatarRequest) {
         final BodyComponent body = selectBody(avatarRequest);
         graphics.drawImage(body.getImage(), body.getX(), body.getY(), null);
         renderTattoo(graphics);
     }
 
-    private void renderFace(final Graphics2D graphics, final AvatarRequest avatarRequest) {
-        final FaceComponent face = selectFace(avatarRequest);
-        renderFacialHair(graphics, avatarRequest);
-        graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
-        renderEaring(graphics);
-        renderScar(graphics);
-//        renderHeadband(graphics);
-        renderMole(graphics);
-        renderHair(graphics, avatarRequest);
-        renderGlasses(graphics, avatarRequest);
-    }
-
     private void renderTattoo(final Graphics2D graphics) {
         if (wightedRandom(25)) {
+            final CustomizableComponent tattoo = AvatarComponentsProvider.tattoo;
+            tattoo.setAvatarType(AvatarType.BODY);
             graphics.drawImage(
-                    AvatarComponentsProvider.tattoo.getImage(),
-                    AvatarComponentsProvider.tattoo.getX(),
-                    AvatarComponentsProvider.tattoo.getY(),
+                    tattoo.getImage(),
+                    tattoo.getX(),
+                    tattoo.getY(),
                     null
             );
         }
+    }
+
+    private void renderHead(Graphics2D graphics, AvatarRequest avatarRequest) {
+        final HeadComponent head = selectHead(avatarRequest);
+        graphics.drawImage(head.getImage(), head.getX(), head.getY(), null);
+    }
+
+    private void renderFace(final Graphics2D graphics, final AvatarRequest avatarRequest) {
+        final FaceComponent face = selectFace(avatarRequest);
+        face.setAvatarType(avatarRequest.getAvatarType());
+        renderFacialHair(graphics, avatarRequest);
+        graphics.drawImage(face.getImage(), face.getX(), face.getY(), null);
+        renderEaring(graphics, avatarRequest);
+        renderScar(graphics, avatarRequest);
+//        renderHeadband(graphics, avatarRequest);
+        renderMole(graphics, avatarRequest);
+        renderHair(graphics, avatarRequest);
+        renderGlasses(graphics, avatarRequest);
     }
 
     private void renderFacialHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
@@ -109,6 +127,7 @@ public class AvatarGeneratorService {
             final Map.Entry<BeardType, HairComponent> beardWithType = selectBeard(avatarRequest);
             final HairComponent beard = beardWithType.getValue();
             final BufferedImage beardImage = selectBeardColor(avatarRequest, beard);
+            beard.setAvatarType(avatarRequest.getAvatarType());
             graphics.drawImage(beardImage, beard.getX(), beard.getY(), null);
             return Optional.ofNullable(beardWithType.getKey());
         }
@@ -119,6 +138,7 @@ public class AvatarGeneratorService {
         if (canHaveMustache(beardType) && avatarRequest.getGender() == Gender.MALE && wightedRandom(50)) {
             final HairComponent mustache = selectMustache(avatarRequest);
             final BufferedImage mustacheImage = selectMustacheColor(avatarRequest, mustache);
+            mustache.setAvatarType(avatarRequest.getAvatarType());
             graphics.drawImage(mustacheImage, mustache.getX(), mustache.getY(), null);
         }
     }
@@ -130,44 +150,52 @@ public class AvatarGeneratorService {
     private void renderHair(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         final HairComponent hair = selectHair(avatarRequest);
         final BufferedImage hairImage = selectHairColor(avatarRequest, hair);
+        hair.setAvatarType(avatarRequest.getAvatarType());
         graphics.drawImage(hairImage, hair.getX(), hair.getY(), null);
     }
 
-    private void renderEaring(final Graphics2D graphics) {
+    private void renderEaring(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         if (wightedRandom(25)) {
-            final OtherComponent earing = resolveRandomEaring();
+            final CustomizableComponent earing = resolveRandomEaring();
+            earing.setAvatarType(avatarRequest.getAvatarType());
             graphics.drawImage(earing.getImage(), earing.getX(), earing.getY(), null);
         }
     }
 
-    private void renderScar(final Graphics2D graphics) {
+    private void renderScar(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         if (wightedRandom(10)) {
+            final CustomizableComponent scar = AvatarComponentsProvider.scar;
+            scar.setAvatarType(avatarRequest.getAvatarType());
             graphics.drawImage(
-                    AvatarComponentsProvider.scar.getImage(),
-                    AvatarComponentsProvider.scar.getX(),
-                    AvatarComponentsProvider.scar.getY(),
+                    scar.getImage(),
+                    scar.getX(),
+                    scar.getY(),
                     null
             );
         }
     }
 
-    private void renderHeadband(final Graphics2D graphics) {
+    private void renderHeadband(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         if (wightedRandom(25)) {
+            final CustomizableComponent headband = AvatarComponentsProvider.headband;
+            headband.setAvatarType(avatarRequest.getAvatarType());
             graphics.drawImage(
-                    AvatarComponentsProvider.headband.getImage(),
-                    AvatarComponentsProvider.headband.getX(),
-                    AvatarComponentsProvider.headband.getY(),
+                    headband.getImage(),
+                    headband.getX(),
+                    headband.getY(),
                     null
             );
         }
     }
 
-    private void renderMole(final Graphics2D graphics) {
+    private void renderMole(final Graphics2D graphics, final AvatarRequest avatarRequest) {
         if (wightedRandom(25)) {
+            final CustomizableComponent mole = AvatarComponentsProvider.mole;
+            mole.setAvatarType(avatarRequest.getAvatarType());
             graphics.drawImage(
-                    AvatarComponentsProvider.mole.getImage(),
-                    AvatarComponentsProvider.mole.getX(),
-                    AvatarComponentsProvider.mole.getY(),
+                    mole.getImage(),
+                    mole.getX(),
+                    mole.getY(),
                     null
             );
         }
@@ -177,6 +205,7 @@ public class AvatarGeneratorService {
         if (wightedRandom(25)) {
             final AccessoryComponent glasses = selectGlasses(avatarRequest);
             final BufferedImage glassesImage = selectGlassesColor(avatarRequest, glasses);
+            glasses.setAvatarType(avatarRequest.getAvatarType());
             graphics.drawImage(glassesImage, glasses.getX(), glasses.getY(), null);
         }
     }
@@ -191,16 +220,30 @@ public class AvatarGeneratorService {
     }
 
     private BodyComponent selectBody(final AvatarRequest avatarRequest) {
-        return avatarRequest.getBodyColor() != null ? resolveBody(avatarRequest.getBodyColor()) : resolveRandomBody();
+        return avatarRequest.getAvatarColor() != null ? resolveBody(avatarRequest.getAvatarColor()) : resolveRandomBody();
     }
 
-    private BodyComponent resolveBody(final BodyColor bodyColor) {
-        return AvatarComponentsProvider.body.get(bodyColor);
+    private BodyComponent resolveBody(final AvatarColor avatarColor) {
+        return AvatarComponentsProvider.body.get(avatarColor);
     }
 
     private BodyComponent resolveRandomBody() {
         return AvatarComponentsProvider.body.get(
-                BodyColor.values()[RANDOM.nextInt(BodyColor.values().length)]
+                AvatarColor.values()[RANDOM.nextInt(AvatarColor.values().length)]
+        );
+    }
+
+    private HeadComponent selectHead(final AvatarRequest avatarRequest) {
+        return avatarRequest.getAvatarColor() != null ? resolveHead(avatarRequest.getAvatarColor()) : resolveRandomHead();
+    }
+
+    private HeadComponent resolveHead(final AvatarColor avatarColor) {
+        return AvatarComponentsProvider.head.get(avatarColor);
+    }
+
+    private HeadComponent resolveRandomHead() {
+        return AvatarComponentsProvider.head.get(
+                AvatarColor.values()[RANDOM.nextInt(AvatarColor.values().length)]
         );
     }
 
@@ -279,7 +322,7 @@ public class AvatarGeneratorService {
         );
     }
 
-    private OtherComponent resolveRandomEaring() {
+    private CustomizableComponent resolveRandomEaring() {
         return AvatarComponentsProvider.earing.get(
                 RANDOM.nextInt(AvatarComponentsProvider.earing.size())
         );

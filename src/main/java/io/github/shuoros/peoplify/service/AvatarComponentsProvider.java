@@ -13,27 +13,36 @@ import java.util.Map;
 
 public class AvatarComponentsProvider {
 
-    protected static final Map<BodyColor, BodyComponent> body;
+    protected static final Map<AvatarColor, BodyComponent> body;
+    protected static final Map<AvatarColor, HeadComponent> head;
     protected static final Map<FaceType, FaceComponent> face;
     protected static final Map<HairType, HairComponent> hair;
     protected static final Map<BeardType, HairComponent> beard;
     protected static final Map<MustacheType, HairComponent> mustache;
     protected static final Map<AccessoryColor, ClothComponent> cloth;
     protected static final Map<GlassesType, AccessoryComponent> glasses;
-    protected static final List<OtherComponent> earing;
-    protected static OtherComponent mole;
-    protected static OtherComponent headband;
-    protected static OtherComponent scar;
-    protected static OtherComponent tattoo;
+    protected static final List<CustomizableComponent> earing;
+    protected static CustomizableComponent mole;
+    protected static CustomizableComponent headband;
+    protected static CustomizableComponent scar;
+    protected static CustomizableComponent tattoo;
 
     static {
         body = Map.of(
-                BodyColor.YELLOW, buildBodyComponent("body-yellow"),
-                BodyColor.BLACK, buildBodyComponent("body-black"),
-                BodyColor.BROWN, buildBodyComponent("body-brown"),
-                BodyColor.NUDE, buildBodyComponent("body-nude"),
-                BodyColor.PINK, buildBodyComponent("body-pink"),
-                BodyColor.WHITE, buildBodyComponent("body-white")
+                AvatarColor.YELLOW, buildBodyComponent("body-yellow"),
+                AvatarColor.BLACK, buildBodyComponent("body-black"),
+                AvatarColor.BROWN, buildBodyComponent("body-brown"),
+                AvatarColor.NUDE, buildBodyComponent("body-nude"),
+                AvatarColor.PINK, buildBodyComponent("body-pink"),
+                AvatarColor.WHITE, buildBodyComponent("body-white")
+        );
+        head = Map.of(
+                AvatarColor.YELLOW, buildHeadComponent("head-yellow"),
+                AvatarColor.BLACK, buildHeadComponent("head-black"),
+                AvatarColor.BROWN, buildHeadComponent("head-brown"),
+                AvatarColor.NUDE, buildHeadComponent("head-nude"),
+                AvatarColor.PINK, buildHeadComponent("head-pink"),
+                AvatarColor.WHITE, buildHeadComponent("head-white")
         );
         face = Map.of(
                 FaceType.NORMAL, buildFaceComponent("face-normal"),
@@ -96,6 +105,12 @@ public class AvatarComponentsProvider {
                 .build();
     }
 
+    private static HeadComponent buildHeadComponent(String name) {
+        return HeadComponent.builder()
+                .image(loadImage(name))
+                .build();
+    }
+
     private static FaceComponent buildFaceComponent(String name) {
         return FaceComponent.builder()
                 .image(loadImage(name))
@@ -147,8 +162,8 @@ public class AvatarComponentsProvider {
                 .build();
     }
 
-    private static OtherComponent buildOtherComponent(String name, Integer x, Integer y) {
-        return OtherComponent.builder()
+    private static CustomizableComponent buildOtherComponent(String name, Integer x, Integer y) {
+        return CustomizableComponent.builder()
                 .image(loadImage(name))
                 .x(x)
                 .y(y)

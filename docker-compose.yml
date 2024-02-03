@@ -10,5 +10,5 @@ services:
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
     ports:
-      - "127.0.0.1:8585:8585"
+      - "127.0.0.1:8585:8080"
       

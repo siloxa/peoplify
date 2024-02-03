@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 @SuperBuilder
-public class HairComponent extends OtherComponent {
+public class HairComponent extends CustomizableComponent {
 
     private Map<HairColor, BufferedImage> hairs;
 

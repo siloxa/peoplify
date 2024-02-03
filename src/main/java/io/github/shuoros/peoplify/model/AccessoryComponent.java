@@ -1,7 +1,6 @@
 package io.github.shuoros.peoplify.model;
 
 import io.github.shuoros.peoplify.model.enumeration.AccessoryColor;
-import io.github.shuoros.peoplify.model.enumeration.HairColor;
 import lombok.experimental.SuperBuilder;
 
 import java.awt.image.BufferedImage;
@@ -9,7 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 @SuperBuilder
-public class AccessoryComponent extends OtherComponent {
+public class AccessoryComponent extends CustomizableComponent {
 
     private Map<AccessoryColor, BufferedImage> colors;
 

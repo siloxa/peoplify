@@ -7,8 +7,9 @@ import lombok.Data;
 public class AvatarRequest {
 
     private Integer size;
+    private AvatarType avatarType;
     private Gender gender;
-    private BodyColor bodyColor;
+    private AvatarColor avatarColor;
     private FaceType faceType;
     private HairType hairType;
     private HairColor hairColor;
