@@ -6,7 +6,7 @@ services:
       context: .
       args:
         JAR_FILE: "./target/*.jar"
-    image: peoplify-app
+    image: peoplify
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
     ports:
