@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>tech.siloxa.peoplify</groupId>
 	<artifactId>peoplify</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<name>Peoplify</name>
 	<description>Peoplify is a random avatar and name generator</description>
 	<url>https://github.com/siloxa/peoplify</url>
