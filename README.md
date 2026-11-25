@@ -130,6 +130,4 @@ To see the changes in different versions of badgify, you can read the [release n
 If you encounter a bug or vulnerability, please read the [issue policy](./ISSUES.md).
 
 ## Acknowledgement
-A great thanks to our wonderful designer [@sarahrajabi](https://github.com/sarahrajabi) for designing the website.
-
-And thanks to all the contributors, the people who reported the bugs and all those who made it possible for us to provide this great piece of software.
+Thanks to all the contributors, the people who reported the bugs and all those who made it possible for us to provide this great piece of software.
